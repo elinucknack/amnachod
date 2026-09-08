@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension version="3.0" type="template" client="site">
+  <name>amswallow</name>
+  <version>1.0</version>
+  <creationDate>11/21/2015</creationDate>
+  <author>Monika Kučerová, Libor Štiťák</author>
+  <authorEmail>libor.stitak@gmail.com</authorEmail>
+  <copyright>Copyright (C) 2015</copyright>
+  <description>Šablona je určená pro web ACADEMII MERCURII střední soukromé školy, s.r.o.</description>
+  <files>
+    <filename>index.php</filename>
+    <folder>css</folder>
+    <folder>js</folder>
+    <folder>images</folder>
+    <folder>fonts</folder>
+  </files>
+  <positions>
+    <position>odkazy</position>
+    <position>obory</position>
+    <position>jazyky</position>
+    <position>novinky</position>
+    <position>aktuality</position>
+    <position>mini-aktuality</position>
+    <position>prave-menu</position>
+    <position>vyhledavani</position>
+    <position>zapati</position>
+  </positions>
+  <config>
+  </config>
+</extension>

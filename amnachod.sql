@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1:3306
--- Vytvořeno: Úte 08. zář 2026, 23:08
+-- Vytvořeno: Úte 08. zář 2026, 23:39
 -- Verze serveru: 8.4.7
 -- Verze PHP: 8.3.28
 
@@ -30,19 +30,19 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `amn_action_logs`;
 CREATE TABLE IF NOT EXISTS `amn_action_logs` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `message_language_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message_language_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `log_date` datetime NOT NULL,
-  `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_id` int NOT NULL DEFAULT '0',
   `item_id` int NOT NULL DEFAULT '0',
-  `ip_address` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0.0.0.0',
+  `ip_address` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0.0.0.0',
   PRIMARY KEY (`id`),
   KEY `idx_user_id` (`user_id`),
   KEY `idx_user_id_logdate` (`user_id`,`log_date`),
   KEY `idx_user_id_extension` (`user_id`,`extension`),
   KEY `idx_extension_item_id` (`extension`,`item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Vypisuji data pro tabulku `amn_action_logs`
@@ -50,7 +50,20 @@ CREATE TABLE IF NOT EXISTS `amn_action_logs` (
 
 INSERT INTO `amn_action_logs` (`id`, `message_language_key`, `message`, `log_date`, `extension`, `user_id`, `item_id`, `ip_address`) VALUES
 (1, 'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN', '{\"action\":\"login\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}', '2026-09-08 23:07:45', 'com_users', 140, 0, 'COM_ACTIONLOGS_DISABLED'),
-(2, 'PLG_ACTIONLOG_JOOMLA_GUIDEDTOURS_TOURSKIPPED', '{\"id\":12,\"title\":\"V\\u00edtejte v Joomla!\",\"state\":\"skipped\",\"step\":1,\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:07:51', 'com_guidedtours.state', 140, 12, 'COM_ACTIONLOGS_DISABLED');
+(2, 'PLG_ACTIONLOG_JOOMLA_GUIDEDTOURS_TOURSKIPPED', '{\"id\":12,\"title\":\"V\\u00edtejte v Joomla!\",\"state\":\"skipped\",\"step\":1,\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:07:51', 'com_guidedtours.state', 140, 12, 'COM_ACTIONLOGS_DISABLED'),
+(3, 'PLG_ACTIONLOG_JOOMLA_EXTENSION_INSTALLED', '{\"action\":\"install\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT\",\"id\":256,\"name\":\"com_akeebabackup\",\"extension_name\":\"com_akeebabackup\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:23:43', 'com_installer', 140, 256, 'COM_ACTIONLOGS_DISABLED'),
+(4, 'PLG_ACTIONLOG_JOOMLA_PLUGIN_INSTALLED', '{\"action\":\"install\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_PLUGIN\",\"id\":257,\"name\":\"PLG_QUICKICON_AKEEBABACKUP\",\"extension_name\":\"PLG_QUICKICON_AKEEBABACKUP\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:23:43', 'com_installer', 140, 257, 'COM_ACTIONLOGS_DISABLED'),
+(5, 'PLG_ACTIONLOG_JOOMLA_PLUGIN_INSTALLED', '{\"action\":\"install\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_PLUGIN\",\"id\":258,\"name\":\"PLG_SYSTEM_AKWARN\",\"extension_name\":\"PLG_SYSTEM_AKWARN\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:23:43', 'com_installer', 140, 258, 'COM_ACTIONLOGS_DISABLED'),
+(6, 'PLG_ACTIONLOG_JOOMLA_EXTENSION_INSTALLED', '{\"action\":\"install\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_PACKAGE\",\"id\":259,\"name\":\"pkg_akeebabackup\",\"extension_name\":\"pkg_akeebabackup\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:23:43', 'com_installer', 140, 259, 'COM_ACTIONLOGS_DISABLED'),
+(7, 'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED', '{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:25:22', 'com_config.application', 140, 0, 'COM_ACTIONLOGS_DISABLED'),
+(8, 'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED', '{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:25:49', 'com_config.application', 140, 0, 'COM_ACTIONLOGS_DISABLED'),
+(9, 'PLG_ACTIONLOG_JOOMLA_USER_CHECKIN', '{\"action\":\"checkin\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":140,\"title\":\"lstitak\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=140\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\",\"table\":\"#__extensions\"}', '2026-09-08 23:27:22', 'com_checkin', 140, 140, 'COM_ACTIONLOGS_DISABLED'),
+(10, 'PLG_SYSTEM_ACTIONLOGS_CONTENT_PUBLISHED', '{\"action\":\"publish\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_PLUGIN\",\"id\":189,\"title\":\"plg_system_languagefilter\",\"itemlink\":\"index.php?option=com_plugins&task=plugin.edit&extension_id=189\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:27:22', 'com_plugins.plugin', 140, 189, 'COM_ACTIONLOGS_DISABLED'),
+(11, 'PLG_SYSTEM_ACTIONLOGS_CONTENT_UPDATED', '{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_PLUGIN\",\"id\":\"118\",\"title\":\"plg_editors_tinymce\",\"extension_name\":\"plg_editors_tinymce\",\"itemlink\":\"index.php?option=com_plugins&task=plugin.edit&extension_id=118\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:28:22', 'com_plugins.plugin', 140, 118, 'COM_ACTIONLOGS_DISABLED'),
+(12, 'PLG_ACTIONLOG_JOOMLA_USER_CHECKIN', '{\"action\":\"checkin\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":140,\"title\":\"lstitak\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=140\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\",\"table\":\"#__extensions\"}', '2026-09-08 23:28:22', 'com_checkin', 140, 140, 'COM_ACTIONLOGS_DISABLED'),
+(13, 'PLG_ACTIONLOG_JOOMLA_EXTENSION_INSTALLED', '{\"action\":\"install\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_MODULE\",\"id\":261,\"name\":\"Slideshow CK\",\"extension_name\":\"Slideshow CK\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:31:53', 'com_installer', 140, 261, 'COM_ACTIONLOGS_DISABLED'),
+(14, 'PLG_ACTIONLOG_JOOMLA_EXTENSION_INSTALLED', '{\"action\":\"install\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT\",\"id\":260,\"name\":\"com_slideshowck\",\"extension_name\":\"com_slideshowck\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:31:53', 'com_installer', 140, 260, 'COM_ACTIONLOGS_DISABLED'),
+(15, 'PLG_ACTIONLOG_JOOMLA_EXTENSION_INSTALLED', '{\"action\":\"install\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_TEMPLATE\",\"id\":262,\"name\":\"amswallow\",\"extension_name\":\"amswallow\",\"userid\":140,\"username\":\"lstitak\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=140\"}', '2026-09-08 23:32:10', 'com_installer', 140, 262, 'COM_ACTIONLOGS_DISABLED');
 
 -- --------------------------------------------------------
 
@@ -61,7 +74,7 @@ INSERT INTO `amn_action_logs` (`id`, `message_language_key`, `message`, `log_dat
 DROP TABLE IF EXISTS `amn_action_logs_extensions`;
 CREATE TABLE IF NOT EXISTS `amn_action_logs_extensions` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `extension` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extension` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -102,7 +115,7 @@ DROP TABLE IF EXISTS `amn_action_logs_users`;
 CREATE TABLE IF NOT EXISTS `amn_action_logs_users` (
   `user_id` int UNSIGNED NOT NULL,
   `notify` tinyint UNSIGNED NOT NULL,
-  `extensions` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extensions` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`user_id`),
   KEY `idx_notify` (`notify`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -116,12 +129,12 @@ CREATE TABLE IF NOT EXISTS `amn_action_logs_users` (
 DROP TABLE IF EXISTS `amn_action_log_config`;
 CREATE TABLE IF NOT EXISTS `amn_action_log_config` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `type_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `id_holder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_holder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `table_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `text_prefix` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `type_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `id_holder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_holder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `table_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text_prefix` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -157,6 +170,105 @@ INSERT INTO `amn_action_log_config` (`id`, `type_title`, `type_alias`, `id_holde
 -- --------------------------------------------------------
 
 --
+-- Struktura tabulky `amn_akeebabackup_backups`
+--
+
+DROP TABLE IF EXISTS `amn_akeebabackup_backups`;
+CREATE TABLE IF NOT EXISTS `amn_akeebabackup_backups` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `backupstart` timestamp NULL DEFAULT NULL,
+  `backupend` timestamp NULL DEFAULT NULL,
+  `status` enum('run','fail','complete') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'run',
+  `origin` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'backend',
+  `type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'full',
+  `profile_id` bigint NOT NULL DEFAULT '1',
+  `archivename` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `absolute_path` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `multipart` int NOT NULL DEFAULT '0',
+  `tag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `backupid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `filesexist` tinyint NOT NULL DEFAULT '1',
+  `remote_filename` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `total_size` bigint NOT NULL DEFAULT '0',
+  `frozen` tinyint(1) NOT NULL DEFAULT '0',
+  `instep` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `idx_fullstatus` (`filesexist`,`status`),
+  KEY `idx_stale` (`status`,`origin`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Vypisuji data pro tabulku `amn_akeebabackup_backups`
+--
+
+INSERT INTO `amn_akeebabackup_backups` (`id`, `description`, `comment`, `backupstart`, `backupend`, `status`, `origin`, `type`, `profile_id`, `archivename`, `absolute_path`, `multipart`, `tag`, `backupid`, `filesexist`, `remote_filename`, `total_size`, `frozen`, `instep`) VALUES
+(1, 'Backup taken on 8. 9. 2026 23:30 UTC', '', '2026-09-08 21:30:50', '2026-09-08 21:30:51', 'complete', 'backend', 'dbonly', 1, 'site-localhost-20260908-233050utc-6f7oLs4H8BZKJi0a.sql', 'C:/Users/libor/Documents/GitHub/amnachod/administrator/components/com_akeebabackup/backup/site-localhost-20260908-233050utc-6f7oLs4H8BZKJi0a.sql', 0, 'backend', 'id-20260908-233049-911858', 1, NULL, 442465, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `amn_akeebabackup_profiles`
+--
+
+DROP TABLE IF EXISTS `amn_akeebabackup_profiles`;
+CREATE TABLE IF NOT EXISTS `amn_akeebabackup_profiles` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `configuration` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `filters` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `quickicon` tinyint NOT NULL DEFAULT '1',
+  `access` int DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Vypisuji data pro tabulku `amn_akeebabackup_profiles`
+--
+
+INSERT INTO `amn_akeebabackup_profiles` (`id`, `description`, `configuration`, `filters`, `quickicon`, `access`) VALUES
+(1, 'Default Backup Profile', '###AES128###lTGMkLf0yM6tTCpOsKnTFpABBJZ3NbFtHNvkxudNaeHMdIT5sOwV5tUKrb2UYM9X8CrTFymTQ74y9DGmoMEX7Eu4mZXrWpv2WYFDHXQQ2Cf5nN4tQulVZXHryTXnHWl9fxIpSzjKLw/NQLlEjd3pYXXdpGPCdUuz9US8paFAEICaHx1yUHP1AKBDZdtUsfAE1pT7pzNj3y3AY2xyzkC4b3AQfSnpidN1x0emYVfoKKeggc1WlhtKD0w0eBMibvTaBN6PyE5Hv6X9C/x1lnTpUJ7vaWyp1QOk1V8mHmo6oBO3smnV9BJphj/Lf8C1fyv1KgXFA2OjKHyA/tCRjYPO+1F0FBhh2EyyAiN+wRQKlpvkQWB0tzAI6iOp+49UqhsQfidqlArAP/N/Es88xw2QE7g7U9p+BWdzLfoiVsjZULiIYBqsvjxvi7DRMCQkTg9bdPF72hlRzJZoLQtF7CPsGlDrtlwgXBLwrZpN11kppzVViEydyVgFGqPIopd9LAeB28+xfAXEcqmAZAisqQ+zCBBadAFV6pi0U75ePPa6Ao5+hdn+Y/KpkgA+5NIHuv8Gl23WsuxQTXkLjxA0qw+YTE29Ex4RJqBQ+jnJkp9mk1y8Y+imkE7g7YtLpYrtzC4jU6nLp5rOxKWpSfKsqjRnJqCZ/Fnsv7K5itUUdITeB5p+ySpy9y1eq8GY0aQ/O2S0/7BUxFJqtbauzuRebEfa8bOsvaa9X4tYL2hhVl17EXL3TKL2ldhZ2MYbI1cy2Hq6LAcGMCp3ZjR3U8tEXjZjp+vntCMXCLqunVqPTWuyyxUb4dhUNzcDh2Cm1MC1hVnPRXHOKO5pZVn8+NDB8UKWbWBVDnrw+SB0p990Kw20qNJz6IUWSxkLmmiMiTJOO3mGUC3dO5lke0R/D9u91valqDqHWTauLJrBTBXkGrG4hfvU3vpU8kuyTPgltAQaslqtlg1OZx1YSxRNCLa9pyKTfkofLQm8p+C1x7hc+AxDw0MxcKwpXQWBj1iGs82Gy65Bxn48FDeh3zxtBk6sJRhFJcvYmO0f8JLOn8T0QF+a7RDvacqwHhrblPVcUXiP5sP5JUcv/R28OdhRmZt2GorI0KblrQiXnHc6dcnqg3AZw0lCKPyJL0BJ37aLKqTTbL9X+FvERiyEGi6xRRQ9hGNu2YhxhSqSWURMx7+4HCGsNMJGaJmd4MQgLAy/YEriVwGWtsrHSL7zx/OghqLzJbStrvDqGaM+DHcGXoy0bXLYWHBSCzXaRMqz8bkmwFBA5X/1gWQrY6acqaGNkbIRiYHQeHDaD9ZPkrI0/Y97/bfLicTSqG4Djt5NQKV6cvuArTrBV/vxYmjhcYjnzv9CzdJnmRaOptUy+WDV62bUV3EdQYeUHaRRlVYUwczjJYVZTxxUxaxXQ866K+m5MAmueoqQs4nVuOp0bmyS3T2WZTMJY/ZX2Ea1yImQShAZHqg2joXjDhanNNraf0t67fmSixHERys8O3PHOtwojgQW+jfK6vz0f3NT2OO2ntXTc0suViJDW61KJTBGmsEaSHUu/8IkBvc4oEA1el+lhiINnsZMfL8QSJF7xNQvF3wy4VfB2pKctQZE+vwk8LEmE/zXdFbV1bkO3L8glyln1tJuy63RcN6kvIZwrm1k/Dh/zkkVf25HSt1Dp6U+vrqNxd7fN39CK0lq2qNxIyvm1B/jXEFPyz5hz3RxbTt+Pq1QBW0D81XXkzwTOGrYayj8wJ101Xi/E0vIOB3luIvLtPdKGC1I8CzBP6IVOUNICGDoOyR67ITMJfL7hIbPHyTFWO4YT0AjJHpZKEb3Hq7asDm8VkKJhAaT5MXjqwc8IOPwMdL3K0TvDmzaNv7LgxgjfnlL0V+4DIQ9+2zNXOEt0p82xvBwzzIf0qm9OE37TLvIEkNuO83ABraaYfGS9qlEYo9vVfOuiLNFDIc8cBzG8ToIz1h30Qk2/pFiNZvM4PxxOw2MIwH+Grup1viCDDHpsnulEohTEi5iPEDP3QYOFHCUDhV5aCj8z3HPH5563OTyw7PWHb0eOha1HPJpAurYB/oPrW+dMUcfR7GxUc+jxeBiVps/iWSP1q6wCt8TeqzZmM7sIoW1QYACo0hZiwok7WmsUhq82jJWh23mu2yR+nY8lJRuKtcWenjUuJ7XUFxuQiyltkUPWzY0HLk6mCX9/nOEMDHCz4NNFFEc7K7WhWIqtREGsoK/Ml5n2acJ/ArLzxGKGYg01uOEnyFzuzKPNlRKyY3s32oPBr8bnDpcuW+W9BROtdjjbt6EFqH0Tv3/5obmeoIyVBp/q1dOnmX5A55LzCYM5vu+M2J3C7jio84+8w0frPFvIjv8oN+1UePy73HpLEzsGB0lDuraG6/Ob9nLAcUjv2SQHq7MOGDXwjVf4NWeiB2mdWj6MKs8bWzcGEwZ4AGOSOBZ8WxvIn5auZPWlDouxU4vOlk9qIVu80vtqi8kvuMPqg4uAtxswJpdEHFoI1shp0cokBDxGM0RjSDJCWhLrCyMxVhfe//6V+vPhySDgOBymHUeMu6n51KFVXS2bHSYps55mq5L44XXFJciJ8OXPy31WrWM6XIc5/YCiBynOco93+xBCMo00SO1v7Hld4owrRlycz/Y8tFlyZC0X16YesWzU/ctIFj3LLr+W6cZUPuc838E+3V9Pn+I6Gy1XtmT6wNvea8BcRzntDFunsZRFRhhsYrcY1QEPXIDNXKKTCEw5mEL+4idMPRiVyIymDrEZkTC4WBilftugb6P2GNAHMHb1rEF3Waf3epw6BtZtAVqEj+xM348pWe8xipncKn/sjuwKPrbGj6sU6+8Qg4KuL73ge8bKP3QfPWHaI5Fr3g/usbcMOYZnyVdsB8uwhW9proXGEs9+l43YrcKt4oHynhNU9idqTocXg4lcjBlPUwTK6WewffljBSOtzPBptPB/KSlppndkoLds1GmvYMU+tzXN8ndfIbRQTF4ld3rWaBovDYnoJCkhpZLaA8+lnroqyEl3v/bmQzn25lawdCeCY4K+k/GXkEQ9ZEz9/VNh8uZq2G47mFE9j8mg/9Dbzkn3esOn3OrUybyIv7C8sXfMJczo3pxeHkRbSHQCzi6iQf6MK6Wc7LgMPhowvxoIBWyZAJ5YxUDMZBM9qsnWTr61l28UnQ+59uXbhU3Q9/AMoeJ72+NpfIBuQdI+5uMm4TUE39IexRhxBCUYjTbVgGKjXKrnnrEzLFh9CSuYMEhbUVBnZac+c/XgW8l07iB0zlOwmKcr1xVZstT7g4mrz1WB8Y+wGdyKkWHKwQZBt0GV2qXiKejtbb1NeAyDGuDZRwg869DMxUUA8TGq4vjw6cPVOM/c7Wgl9CT5g4cddV9uwrlx8OG8wDjv8dxBdMLJnpeCr2WQAQO7hgUOzibNlGMrzu7tRpQ7pY2eSPRIT4EJSquoEF6Zx5ZN5zwDavcy9IqZtO0i62RSvDxJQc+gp7ZccFTxYg483npLOeAYxr0kSG/48abE9K5pFDxZpxVjOr6ymW9lLRpmFu7JE+HkOQufczGSkvkeeGgKxl27hdxm+5qikv0ihw37rYx2Wgg4jxWj/AxKJav7xHw+H6gk/wbzsQ+n3VuaeyUFvN66aIXFYUtYW9UPB0OZMmfANYR3Ejt6onQTCnsdSuJNCdCavKkBi3L2bVb7I0hVLouUB9vkzLjf3n97pcJhXO6TawdH8dgaTH4wfZxZ/kW6lWPB5DPwZV90rPM7NRkMVJYK91qxvl1uJI1UBS7Gb7LbfTlVLjzl+Tb60iMzSrr/GRVEHzz00aOQOyMStiSPF4Rh8pQByHIOTeP9NPRoR5tQp9m/Lm3GMzRWwd2nyr7B0z8IxEyFs8a0T8xRHI26AMcidC4HSnIrpHKfcNiYNpoEASIKw/WczurpMi9FTznQifcMUBo+Ik//Lx2h4orNNc4Nag7S5TOLLyJuUi2/mcdUuHUypEBOCsnd7LPh+hmi4jZSH4H6UW5yXBAisCsTzOcci2L09IlTLr1MNrOIpP6phnSZVBOZKED4SqxRvLyMgbGiiTfhb33KUWWm9yR4HIu2SJqJf43gU2iYHx9qeCaVkH/oz2GbC7w/LhNxqNNiZs8OSWAhUGzN+hRwPQyxCDjk1yJZgKls/zA7Tz8h9oQVHAtitdanKsGudZr7IiUNzCD6KUmKWQkI1WOLBIMzGOU//o1Etrr7iMY9Vw6UxJB3mytXprO5i3o/bJbS2QVREwtizDaDJjG2ULmzRUsDXC0zW13NNTL1fRXKuk0HvJHlmxVfS4adyqCKMP5qSCqV1uuXTHPbfupxxcWER4bOqVJ0KVQQPFlTk1piZRqsv0p4STzZ7Q9mCYko+mMjbaaezla6XEOY5YVRZTXPplXl2O647uNRt79YUzn/5Y+OydlnmI4qbWBmM9BumI9uecgwW56tSyO8+VKDNXQICbxTTyA2y0NPbvNmwQT7QGBEnDpoGuim1IRttogfhZOYYu/7jsihgy0LpM8nSaLCgqKFdRs+YqVd+iMmeF/GUCnpbY1DSrewBWkg9VXI1/iMt20HlYPMuQX1Bhz03GWxODW3cQv5opdf59qD52DFjHXwlm89rrK+X689b2OnU1Fak91O7vGbQlxnjbf+F/9hyIjdjk3jtghFR8D6zAEHMdnS4v9H+awimJUZ74YlERR6oot3xzFs2JIMYRoqfnQ3iEwOAS8WhgCc3mNlT8souQDaXXjvH5nl7GtxgzAPJ6e3GaEKPLbwYE9p/osUlTm3LUC920SGb+H+OpUWJZXcP3DFPW7EUrolbEF4Xw2kOTkh9h6HJk7uBoOsQ0gu3/1B+A/UXLxy6gRJEml6oc62ae59GT8CBiWC2N+37OaFj1WfjzmhqVSAxNXSeQsheinjvhBbyoweSUWeNlVkt/VESYV6nOkAsmSZthEDxfrhUg19eR1BztxTY84Jb1ysdwtIEObq6BmLMGKCPNKUFNU0obbEXyiXRRH5wNCNsQmGdZTZTgQ6XlYLpKqIOt1GD3crwi0DqgviV9z8fNk3mek/qF7G9rAtyC+g9dj5f9fC0pQSVbBmko0nZiUiT0fwpVnuI5LgQ4AAA==', '', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `amn_akeebabackup_storage`
+--
+
+DROP TABLE IF EXISTS `amn_akeebabackup_storage`;
+CREATE TABLE IF NOT EXISTS `amn_akeebabackup_storage` (
+  `tag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastupdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`tag`(100))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `amn_akeeba_common`
+--
+
+DROP TABLE IF EXISTS `amn_akeeba_common`;
+CREATE TABLE IF NOT EXISTS `amn_akeeba_common` (
+  `key` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`key`(100))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Vypisuji data pro tabulku `amn_akeeba_common`
+--
+
+INSERT INTO `amn_akeeba_common` (`key`, `value`) VALUES
+('stats_lastrun', '1788910119'),
+('stats_siteid', 'a526f3c1af75c4004a7f089634aa9bf7d3264e75'),
+('stats_siteurl', '3b99ec368775e94f44094040725d5b40');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabulky `amn_assets`
 --
 
@@ -167,21 +279,21 @@ CREATE TABLE IF NOT EXISTS `amn_assets` (
   `lft` int NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
   `level` int UNSIGNED NOT NULL COMMENT 'The cached level in the nested tree.',
-  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The unique name for the asset.',
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The descriptive title for the asset.',
-  `rules` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The unique name for the asset.',
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The descriptive title for the asset.',
+  `rules` varchar(5120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_asset_name` (`name`),
   KEY `idx_lft_rgt` (`lft`,`rgt`),
   KEY `idx_parent_id` (`parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Vypisuji data pro tabulku `amn_assets`
 --
 
 INSERT INTO `amn_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
-(1, 0, 0, 185, 0, 'root.1', 'Root Asset', '{\"core.login.site\":{\"6\":1,\"2\":1},\"core.login.admin\":{\"6\":1},\"core.login.api\":{\"8\":1},\"core.login.offline\":{\"6\":1},\"core.admin\":{\"8\":1},\"core.manage\":{\"7\":1},\"core.create\":{\"6\":1,\"3\":1},\"core.delete\":{\"6\":1},\"core.edit\":{\"6\":1,\"4\":1},\"core.edit.state\":{\"6\":1,\"5\":1},\"core.edit.own\":{\"6\":1,\"3\":1}}'),
+(1, 0, 0, 191, 0, 'root.1', 'Root Asset', '{\"core.login.site\":{\"6\":1,\"2\":1},\"core.login.admin\":{\"6\":1},\"core.login.api\":{\"8\":1},\"core.login.offline\":{\"6\":1},\"core.admin\":{\"8\":1},\"core.manage\":{\"7\":1},\"core.create\":{\"6\":1,\"3\":1},\"core.delete\":{\"6\":1},\"core.edit\":{\"6\":1,\"4\":1},\"core.edit.state\":{\"6\":1,\"5\":1},\"core.edit.own\":{\"6\":1,\"3\":1}}'),
 (2, 1, 1, 2, 1, 'com_admin', 'com_admin', '{}'),
 (3, 1, 3, 6, 1, 'com_banners', 'com_banners', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
 (4, 1, 7, 8, 1, 'com_cache', 'com_cache', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"7\":1}}'),
@@ -198,24 +310,24 @@ INSERT INTO `amn_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `tit
 (15, 1, 53, 54, 1, 'com_media', 'com_media', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1},\"core.create\":{\"3\":1},\"core.delete\":{\"5\":1}}'),
 (16, 1, 55, 58, 1, 'com_menus', 'com_menus', '{\"core.admin\":{\"7\":1}}'),
 (17, 1, 59, 60, 1, 'com_messages', 'com_messages', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"7\":1}}'),
-(18, 1, 61, 134, 1, 'com_modules', 'com_modules', '{\"core.admin\":{\"7\":1}}'),
-(19, 1, 135, 138, 1, 'com_newsfeeds', 'com_newsfeeds', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
-(20, 1, 139, 140, 1, 'com_plugins', 'com_plugins', '{\"core.admin\":{\"7\":1}}'),
-(21, 1, 141, 142, 1, 'com_redirect', 'com_redirect', '{\"core.admin\":{\"7\":1}}'),
-(23, 1, 143, 144, 1, 'com_templates', 'com_templates', '{\"core.admin\":{\"7\":1}}'),
-(24, 1, 149, 152, 1, 'com_users', 'com_users', '{\"core.admin\":{\"7\":1}}'),
-(26, 1, 153, 154, 1, 'com_wrapper', 'com_wrapper', '{}'),
+(18, 1, 61, 136, 1, 'com_modules', 'com_modules', '{\"core.admin\":{\"7\":1}}'),
+(19, 1, 137, 140, 1, 'com_newsfeeds', 'com_newsfeeds', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
+(20, 1, 141, 142, 1, 'com_plugins', 'com_plugins', '{\"core.admin\":{\"7\":1}}'),
+(21, 1, 143, 144, 1, 'com_redirect', 'com_redirect', '{\"core.admin\":{\"7\":1}}'),
+(23, 1, 145, 146, 1, 'com_templates', 'com_templates', '{\"core.admin\":{\"7\":1}}'),
+(24, 1, 151, 154, 1, 'com_users', 'com_users', '{\"core.admin\":{\"7\":1}}'),
+(26, 1, 155, 156, 1, 'com_wrapper', 'com_wrapper', '{}'),
 (27, 8, 18, 19, 2, 'com_content.category.2', 'Uncategorised', '{}'),
 (28, 3, 4, 5, 2, 'com_banners.category.3', 'Uncategorised', '{}'),
 (29, 7, 14, 15, 2, 'com_contact.category.4', 'Uncategorised', '{}'),
-(30, 19, 136, 137, 2, 'com_newsfeeds.category.5', 'Uncategorised', '{}'),
-(32, 24, 150, 151, 2, 'com_users.category.7', 'Uncategorised', '{}'),
-(33, 1, 155, 156, 1, 'com_finder', 'com_finder', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
-(34, 1, 157, 158, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{}'),
-(35, 1, 159, 160, 1, 'com_tags', 'com_tags', '{}'),
-(36, 1, 161, 162, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
-(37, 1, 163, 164, 1, 'com_ajax', 'com_ajax', '{}'),
-(38, 1, 165, 166, 1, 'com_postinstall', 'com_postinstall', '{}'),
+(30, 19, 138, 139, 2, 'com_newsfeeds.category.5', 'Uncategorised', '{}'),
+(32, 24, 152, 153, 2, 'com_users.category.7', 'Uncategorised', '{}'),
+(33, 1, 157, 158, 1, 'com_finder', 'com_finder', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
+(34, 1, 159, 160, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{}'),
+(35, 1, 161, 162, 1, 'com_tags', 'com_tags', '{}'),
+(36, 1, 163, 164, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
+(37, 1, 165, 166, 1, 'com_ajax', 'com_ajax', '{}'),
+(38, 1, 167, 168, 1, 'com_postinstall', 'com_postinstall', '{}'),
 (39, 18, 62, 63, 2, 'com_modules.module.1', 'Main Menu', '{}'),
 (40, 18, 64, 65, 2, 'com_modules.module.2', 'Login', '{}'),
 (41, 18, 66, 67, 2, 'com_modules.module.3', 'Popular Articles', '{}'),
@@ -240,8 +352,8 @@ INSERT INTO `amn_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `tit
 (62, 56, 31, 32, 3, 'com_content.transition.5', 'FEATURE', '{}'),
 (63, 56, 33, 34, 3, 'com_content.transition.6', 'UNFEATURE', '{}'),
 (64, 56, 35, 36, 3, 'com_content.transition.7', 'PUBLISH_AND_FEATURE', '{}'),
-(65, 1, 145, 146, 1, 'com_privacy', 'com_privacy', '{}'),
-(66, 1, 147, 148, 1, 'com_actionlogs', 'com_actionlogs', '{}'),
+(65, 1, 147, 148, 1, 'com_privacy', 'com_privacy', '{}'),
+(66, 1, 149, 150, 1, 'com_actionlogs', 'com_actionlogs', '{}'),
 (67, 18, 78, 79, 2, 'com_modules.module.88', 'Latest Actions', '{}'),
 (68, 18, 80, 81, 2, 'com_modules.module.89', 'Privacy Dashboard', '{}'),
 (70, 18, 90, 91, 2, 'com_modules.module.103', 'Site', '{}'),
@@ -263,17 +375,20 @@ INSERT INTO `amn_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `tit
 (87, 18, 126, 127, 2, 'com_modules.module.97', 'Recently Added Articles', '{}'),
 (88, 18, 128, 129, 2, 'com_modules.module.98', 'Logged-in Users', '{}'),
 (89, 18, 130, 131, 2, 'com_modules.module.90', 'Login Support', '{}'),
-(90, 1, 167, 174, 1, 'com_scheduler', 'com_scheduler', '{}'),
-(91, 1, 175, 176, 1, 'com_associations', 'com_associations', '{}'),
-(92, 1, 177, 178, 1, 'com_categories', 'com_categories', '{}'),
-(93, 1, 179, 180, 1, 'com_fields', 'com_fields', '{}'),
-(94, 1, 181, 182, 1, 'com_workflow', 'com_workflow', '{}'),
-(95, 1, 183, 184, 1, 'com_guidedtours', 'com_guidedtours', '{}'),
+(90, 1, 169, 176, 1, 'com_scheduler', 'com_scheduler', '{}'),
+(91, 1, 177, 178, 1, 'com_associations', 'com_associations', '{}'),
+(92, 1, 179, 180, 1, 'com_categories', 'com_categories', '{}'),
+(93, 1, 181, 182, 1, 'com_fields', 'com_fields', '{}'),
+(94, 1, 183, 184, 1, 'com_workflow', 'com_workflow', '{}'),
+(95, 1, 185, 186, 1, 'com_guidedtours', 'com_guidedtours', '{}'),
 (96, 18, 132, 133, 2, 'com_modules.module.109', 'Guided Tours', '{}'),
-(97, 90, 168, 169, 2, 'com_scheduler.task.1', 'Rotate Logs', '{}'),
-(98, 90, 170, 171, 2, 'com_scheduler.task.2', 'Session GC', '{}'),
-(99, 90, 172, 173, 2, 'com_scheduler.task.3', 'Update Notification', '{}'),
-(100, 11, 46, 47, 2, 'com_languages.language.2', 'Czech (Čeština)', '{}');
+(97, 90, 170, 171, 2, 'com_scheduler.task.1', 'Rotate Logs', '{}'),
+(98, 90, 172, 173, 2, 'com_scheduler.task.2', 'Session GC', '{}'),
+(99, 90, 174, 175, 2, 'com_scheduler.task.3', 'Update Notification', '{}'),
+(100, 11, 46, 47, 2, 'com_languages.language.2', 'Czech (Čeština)', '{}'),
+(101, 1, 187, 188, 1, 'com_akeebabackup', 'com_akeebabackup', '{}'),
+(102, 1, 189, 190, 1, 'com_slideshowck', 'com_slideshowck', '{}'),
+(103, 18, 134, 135, 2, 'com_modules.module.110', 'Slideshow CK', '{}');
 
 -- --------------------------------------------------------
 
@@ -284,8 +399,8 @@ INSERT INTO `amn_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `tit
 DROP TABLE IF EXISTS `amn_associations`;
 CREATE TABLE IF NOT EXISTS `amn_associations` (
   `id` int NOT NULL COMMENT 'A reference to the associated item.',
-  `context` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The context of the associated item.',
-  `key` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.',
+  `context` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The context of the associated item.',
+  `key` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.',
   PRIMARY KEY (`context`,`id`),
   KEY `idx_key` (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -301,22 +416,22 @@ CREATE TABLE IF NOT EXISTS `amn_banners` (
   `id` int NOT NULL AUTO_INCREMENT,
   `cid` int NOT NULL DEFAULT '0',
   `type` int NOT NULL DEFAULT '0',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `imptotal` int NOT NULL DEFAULT '0',
   `impmade` int NOT NULL DEFAULT '0',
   `clicks` int NOT NULL DEFAULT '0',
-  `clickurl` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `clickurl` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `state` tinyint NOT NULL DEFAULT '0',
   `catid` int UNSIGNED NOT NULL DEFAULT '0',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `custombannercode` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `custombannercode` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `sticky` tinyint UNSIGNED NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0',
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `own_prefix` tinyint NOT NULL DEFAULT '0',
-  `metakey_prefix` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `metakey_prefix` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `purchase_type` tinyint NOT NULL DEFAULT '-1',
   `track_clicks` tinyint NOT NULL DEFAULT '-1',
   `track_impressions` tinyint NOT NULL DEFAULT '-1',
@@ -326,9 +441,9 @@ CREATE TABLE IF NOT EXISTS `amn_banners` (
   `publish_down` datetime DEFAULT NULL,
   `reset` datetime DEFAULT NULL,
   `created` datetime NOT NULL,
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `created_by` int UNSIGNED NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int UNSIGNED NOT NULL DEFAULT '0',
   `version` int UNSIGNED NOT NULL DEFAULT '1',
@@ -349,16 +464,16 @@ CREATE TABLE IF NOT EXISTS `amn_banners` (
 DROP TABLE IF EXISTS `amn_banner_clients`;
 CREATE TABLE IF NOT EXISTS `amn_banner_clients` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `extrainfo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `contact` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extrainfo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
-  `metakey` text COLLATE utf8mb4_unicode_ci,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `own_prefix` tinyint NOT NULL DEFAULT '0',
-  `metakey_prefix` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `metakey_prefix` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `purchase_type` tinyint NOT NULL DEFAULT '-1',
   `track_clicks` tinyint NOT NULL DEFAULT '-1',
   `track_impressions` tinyint NOT NULL DEFAULT '-1',
@@ -399,26 +514,26 @@ CREATE TABLE IF NOT EXISTS `amn_categories` (
   `lft` int NOT NULL DEFAULT '0',
   `rgt` int NOT NULL DEFAULT '0',
   `level` int UNSIGNED NOT NULL DEFAULT '0',
-  `path` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `path` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` mediumtext COLLATE utf8mb4_unicode_ci,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `published` tinyint NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `access` int UNSIGNED NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The meta description for the page.',
-  `metakey` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The keywords for the page.',
-  `metadata` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'JSON encoded metadata properties.',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The meta description for the page.',
+  `metakey` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The keywords for the page.',
+  `metadata` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'JSON encoded metadata properties.',
   `created_user_id` int UNSIGNED NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL,
   `modified_user_id` int UNSIGNED NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL,
   `hits` int UNSIGNED NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `version` int UNSIGNED NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `cat_idx` (`extension`,`published`,`access`),
@@ -451,42 +566,42 @@ INSERT INTO `amn_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `leve
 DROP TABLE IF EXISTS `amn_contact_details`;
 CREATE TABLE IF NOT EXISTS `amn_contact_details` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `con_position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci,
-  `suburb` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `state` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `postcode` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `telephone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fax` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `misc` mediumtext COLLATE utf8mb4_unicode_ci,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email_to` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `con_position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `suburb` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postcode` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telephone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `misc` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_to` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `default_con` tinyint UNSIGNED NOT NULL DEFAULT '0',
   `published` tinyint NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int NOT NULL DEFAULT '0',
   `catid` int NOT NULL DEFAULT '0',
   `access` int UNSIGNED NOT NULL DEFAULT '0',
-  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `webpage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `sortname1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `sortname2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `sortname3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `language` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `webpage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `sortname1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `sortname2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `sortname3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int UNSIGNED NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int UNSIGNED NOT NULL DEFAULT '0',
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metadata` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metadata` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `featured` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if contact is featured.',
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
@@ -512,34 +627,34 @@ DROP TABLE IF EXISTS `amn_content`;
 CREATE TABLE IF NOT EXISTS `amn_content` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `asset_id` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `introtext` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fulltext` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `introtext` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fulltext` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `catid` int UNSIGNED NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `created_by` int UNSIGNED NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int UNSIGNED NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
-  `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `urls` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `attribs` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `urls` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attribs` varchar(5120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `version` int UNSIGNED NOT NULL DEFAULT '1',
   `ordering` int NOT NULL DEFAULT '0',
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `access` int UNSIGNED NOT NULL DEFAULT '0',
   `hits` int UNSIGNED NOT NULL DEFAULT '0',
-  `metadata` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metadata` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `featured` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The language code for the article.',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The language code for the article.',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `idx_access` (`access`),
   KEY `idx_checkout` (`checked_out`),
@@ -559,7 +674,7 @@ CREATE TABLE IF NOT EXISTS `amn_content` (
 
 DROP TABLE IF EXISTS `amn_contentitem_tag_map`;
 CREATE TABLE IF NOT EXISTS `amn_contentitem_tag_map` (
-  `type_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `type_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `core_content_id` int UNSIGNED NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int NOT NULL COMMENT 'PK from the content type table',
   `tag_id` int UNSIGNED NOT NULL COMMENT 'PK from the tag table',
@@ -597,7 +712,7 @@ CREATE TABLE IF NOT EXISTS `amn_content_rating` (
   `content_id` int NOT NULL DEFAULT '0',
   `rating_sum` int UNSIGNED NOT NULL DEFAULT '0',
   `rating_count` int UNSIGNED NOT NULL DEFAULT '0',
-  `lastip` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `lastip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`content_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -610,13 +725,13 @@ CREATE TABLE IF NOT EXISTS `amn_content_rating` (
 DROP TABLE IF EXISTS `amn_content_types`;
 CREATE TABLE IF NOT EXISTS `amn_content_types` (
   `type_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `type_alias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `table` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `rules` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `field_mappings` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `router` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `content_history_options` varchar(5120) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'JSON string for com_contenthistory options',
+  `type_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `type_alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `table` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `rules` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `field_mappings` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `router` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `content_history_options` varchar(5120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'JSON string for com_contenthistory options',
   PRIMARY KEY (`type_id`),
   KEY `idx_alias` (`type_alias`(100))
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -651,29 +766,29 @@ DROP TABLE IF EXISTS `amn_extensions`;
 CREATE TABLE IF NOT EXISTS `amn_extensions` (
   `extension_id` int NOT NULL AUTO_INCREMENT,
   `package_id` int NOT NULL DEFAULT '0' COMMENT 'Parent package ID for extensions installed as a package.',
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `element` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `changelogurl` text COLLATE utf8mb4_unicode_ci,
-  `folder` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `element` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `changelogurl` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `folder` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `client_id` tinyint NOT NULL,
   `enabled` tinyint NOT NULL DEFAULT '0',
   `access` int UNSIGNED NOT NULL DEFAULT '1',
   `protected` tinyint NOT NULL DEFAULT '0' COMMENT 'Flag to indicate if the extension is protected. Protected extensions cannot be disabled.',
   `locked` tinyint NOT NULL DEFAULT '0' COMMENT 'Flag to indicate if the extension is locked. Locked extensions cannot be uninstalled.',
-  `manifest_cache` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `custom_data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `manifest_cache` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `custom_data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `ordering` int DEFAULT '0',
   `state` int DEFAULT '0',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`extension_id`),
   KEY `element_clientid` (`element`,`client_id`),
   KEY `element_folder_clientid` (`element`,`folder`,`client_id`),
   KEY `extension` (`type`,`element`,`folder`,`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Vypisuji data pro tabulku `amn_extensions`
@@ -798,7 +913,7 @@ INSERT INTO `amn_extensions` (`extension_id`, `package_id`, `name`, `type`, `ele
 (115, 0, 'plg_editors-xtd_readmore', 'plugin', 'readmore', '', 'editors-xtd', 0, 1, 1, 0, 1, '{\"name\":\"plg_editors-xtd_readmore\",\"type\":\"plugin\",\"creationDate\":\"2006-03\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2006 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_READMORE_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\EditorsXtd\\\\ReadMore\",\"filename\":\"readmore\"}', '', '', NULL, NULL, 8, 0, NULL),
 (116, 0, 'plg_editors_codemirror', 'plugin', 'codemirror', '', 'editors', 0, 1, 1, 0, 1, '{\"name\":\"plg_editors_codemirror\",\"type\":\"plugin\",\"creationDate\":\"28 March 2011\",\"author\":\"Marijn Haverbeke\",\"copyright\":\"Copyright (C) 2014 - 2021 by Marijn Haverbeke <marijnh@gmail.com> and others\",\"authorEmail\":\"marijnh@gmail.com\",\"authorUrl\":\"https:\\/\\/codemirror.net\\/\",\"version\":\"6.0.0\",\"description\":\"PLG_CODEMIRROR_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Editors\\\\CodeMirror\",\"filename\":\"codemirror\"}', '{\"lineNumbers\":\"1\",\"lineWrapping\":\"1\",\"matchTags\":\"1\",\"matchBrackets\":\"1\",\"marker-gutter\":\"1\",\"autoCloseTags\":\"1\",\"autoCloseBrackets\":\"1\",\"autoFocus\":\"1\",\"theme\":\"default\",\"tabmode\":\"indent\"}', '', NULL, NULL, 1, 0, NULL),
 (117, 0, 'plg_editors_none', 'plugin', 'none', '', 'editors', 0, 1, 1, 1, 1, '{\"name\":\"plg_editors_none\",\"type\":\"plugin\",\"creationDate\":\"2005-09\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_NONE_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Editors\\\\None\",\"filename\":\"none\"}', '', '', NULL, NULL, 2, 0, NULL),
-(118, 0, 'plg_editors_tinymce', 'plugin', 'tinymce', '', 'editors', 0, 1, 1, 0, 1, '{\"name\":\"plg_editors_tinymce\",\"type\":\"plugin\",\"creationDate\":\"2005-08\",\"author\":\"Tiny Technologies, Inc\",\"copyright\":\"Tiny Technologies, Inc\",\"authorEmail\":\"N\\/A\",\"authorUrl\":\"https:\\/\\/www.tiny.cloud\",\"version\":\"8.6.0\",\"description\":\"PLG_TINY_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Editors\\\\TinyMCE\",\"filename\":\"tinymce\"}', '{\"configuration\":{\"toolbars\":{\"2\":{\"toolbar1\":[\"bold\",\"underline\",\"strikethrough\",\"|\",\"undo\",\"redo\",\"|\",\"bullist\",\"numlist\",\"|\",\"pastetext\"]},\"1\":{\"menu\":[\"edit\",\"insert\",\"view\",\"format\",\"table\",\"tools\"],\"toolbar1\":[\"bold\",\"italic\",\"underline\",\"strikethrough\",\"|\",\"alignleft\",\"aligncenter\",\"alignright\",\"alignjustify\",\"|\",\"blocks\",\"|\",\"bullist\",\"numlist\",\"|\",\"outdent\",\"indent\",\"|\",\"undo\",\"redo\",\"|\",\"link\",\"unlink\",\"anchor\",\"code\",\"|\",\"hr\",\"table\",\"|\",\"subscript\",\"superscript\",\"|\",\"charmap\",\"pastetext\",\"preview\"]},\"0\":{\"menu\":[\"edit\",\"insert\",\"view\",\"format\",\"table\",\"tools\"],\"toolbar1\":[\"bold\",\"italic\",\"underline\",\"strikethrough\",\"|\",\"alignleft\",\"aligncenter\",\"alignright\",\"alignjustify\",\"|\",\"styles\",\"|\",\"blocks\",\"fontfamily\",\"fontsize\",\"|\",\"searchreplace\",\"|\",\"bullist\",\"numlist\",\"|\",\"outdent\",\"indent\",\"|\",\"undo\",\"redo\",\"|\",\"link\",\"unlink\",\"anchor\",\"image\",\"|\",\"code\",\"|\",\"forecolor\",\"backcolor\",\"|\",\"fullscreen\",\"|\",\"table\",\"|\",\"subscript\",\"superscript\",\"|\",\"charmap\",\"emoticons\",\"media\",\"hr\",\"ltr\",\"rtl\",\"|\",\"cut\",\"copy\",\"paste\",\"pastetext\",\"|\",\"visualchars\",\"visualblocks\",\"nonbreaking\",\"blockquote\",\"jtemplate\",\"|\",\"print\",\"preview\",\"codesample\",\"insertdatetime\",\"removeformat\",\"language\",\"abbr\",\"abbr_remove\"]}},\"setoptions\":{\"2\":{\"access\":[\"1\"],\"skin\":\"0\",\"skin_admin\":\"0\",\"mobile\":\"0\",\"drag_drop\":\"1\",\"path\":\"\",\"entity_encoding\":\"raw\",\"lang_mode\":\"1\",\"text_direction\":\"ltr\",\"content_css\":\"1\",\"content_css_custom\":\"\",\"relative_urls\":\"1\",\"newlines\":\"0\",\"use_config_textfilters\":\"0\",\"invalid_elements\":\"script,applet,iframe\",\"valid_elements\":\"\",\"extended_elements\":\"\",\"resizing\":\"1\",\"resize_horizontal\":\"1\",\"element_path\":\"1\",\"wordcount\":\"1\",\"image_advtab\":\"0\",\"advlist\":\"1\",\"autosave\":\"1\",\"contextmenu\":\"1\",\"custom_plugin\":\"\",\"custom_button\":\"\"},\"1\":{\"access\":[\"6\",\"2\"],\"skin\":\"0\",\"skin_admin\":\"0\",\"mobile\":\"0\",\"drag_drop\":\"1\",\"path\":\"\",\"entity_encoding\":\"raw\",\"lang_mode\":\"1\",\"text_direction\":\"ltr\",\"content_css\":\"1\",\"content_css_custom\":\"\",\"relative_urls\":\"1\",\"newlines\":\"0\",\"use_config_textfilters\":\"0\",\"invalid_elements\":\"script,applet,iframe\",\"valid_elements\":\"\",\"extended_elements\":\"\",\"resizing\":\"1\",\"resize_horizontal\":\"1\",\"element_path\":\"1\",\"wordcount\":\"1\",\"image_advtab\":\"0\",\"advlist\":\"1\",\"autosave\":\"1\",\"contextmenu\":\"1\",\"custom_plugin\":\"\",\"custom_button\":\"\"},\"0\":{\"access\":[\"7\",\"4\",\"8\"],\"skin\":\"0\",\"skin_admin\":\"0\",\"mobile\":\"0\",\"drag_drop\":\"1\",\"path\":\"\",\"entity_encoding\":\"raw\",\"lang_mode\":\"1\",\"text_direction\":\"ltr\",\"content_css\":\"1\",\"content_css_custom\":\"\",\"relative_urls\":\"1\",\"newlines\":\"0\",\"use_config_textfilters\":\"0\",\"invalid_elements\":\"script,applet,iframe\",\"valid_elements\":\"\",\"extended_elements\":\"\",\"resizing\":\"1\",\"resize_horizontal\":\"1\",\"element_path\":\"1\",\"wordcount\":\"1\",\"image_advtab\":\"1\",\"advlist\":\"1\",\"autosave\":\"1\",\"contextmenu\":\"1\",\"custom_plugin\":\"\",\"custom_button\":\"\"}}},\"sets_amount\":3,\"html_height\":\"550px\",\"html_width\":\"100%\"}', '', NULL, NULL, 3, 0, NULL),
+(118, 0, 'plg_editors_tinymce', 'plugin', 'tinymce', '', 'editors', 0, 1, 1, 0, 1, '{\"name\":\"plg_editors_tinymce\",\"type\":\"plugin\",\"creationDate\":\"2005-08\",\"author\":\"Tiny Technologies, Inc\",\"copyright\":\"Tiny Technologies, Inc\",\"authorEmail\":\"N\\/A\",\"authorUrl\":\"https:\\/\\/www.tiny.cloud\",\"version\":\"8.6.0\",\"description\":\"PLG_TINY_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Editors\\\\TinyMCE\",\"filename\":\"tinymce\"}', '{\"configuration\":{\"setoptions\":[{\"access\":[\"7\",\"4\",\"8\"],\"skin\":\"\",\"skin_dark\":\"\",\"skin_admin\":\"\",\"skin_admin_dark\":\"\",\"toolbar_mode\":\"sliding\",\"drag_drop\":\"1\",\"path\":\"\",\"content_template_path\":\"\",\"entity_encoding\":\"raw\",\"lang_mode\":\"1\",\"lang_code\":\"\",\"text_direction\":\"ltr\",\"content_css\":\"1\",\"content_css_custom\":\"\",\"relative_urls\":\"1\",\"newlines\":\"0\",\"use_config_textfilters\":\"0\",\"invalid_elements\":\"script,applet\",\"valid_elements\":\"\",\"extended_elements\":\"\",\"sandbox_iframes\":\"0\",\"sandbox_iframes_exclusions\":\"\",\"resizing\":\"1\",\"resize_horizontal\":\"1\",\"element_path\":\"1\",\"wordcount\":\"1\",\"textpattern\":\"0\",\"image_advtab\":\"1\",\"advlist\":\"1\",\"contextmenu\":\"1\",\"paste_as_text\":\"0\",\"sourcecode\":\"1\",\"content_languages\":\"\",\"custom_plugin\":\"\",\"custom_button\":\"\",\"external_plugins\":\"\",\"link_classes_list\":\"\",\"img_classes_list\":\"\"},{\"access\":[\"6\",\"2\"],\"skin\":\"\",\"skin_dark\":\"\",\"skin_admin\":\"\",\"skin_admin_dark\":\"\",\"toolbar_mode\":\"sliding\",\"drag_drop\":\"1\",\"path\":\"\",\"content_template_path\":\"\",\"entity_encoding\":\"raw\",\"lang_mode\":\"1\",\"lang_code\":\"\",\"text_direction\":\"ltr\",\"content_css\":\"1\",\"content_css_custom\":\"\",\"relative_urls\":\"1\",\"newlines\":\"0\",\"use_config_textfilters\":\"0\",\"invalid_elements\":\"script,applet,iframe\",\"valid_elements\":\"\",\"extended_elements\":\"\",\"sandbox_iframes\":\"1\",\"sandbox_iframes_exclusions\":\"\",\"resizing\":\"1\",\"resize_horizontal\":\"1\",\"element_path\":\"1\",\"wordcount\":\"1\",\"textpattern\":\"0\",\"image_advtab\":\"0\",\"advlist\":\"1\",\"contextmenu\":\"1\",\"paste_as_text\":\"0\",\"sourcecode\":\"1\",\"content_languages\":\"\",\"custom_plugin\":\"\",\"custom_button\":\"\",\"external_plugins\":\"\",\"link_classes_list\":\"\",\"img_classes_list\":\"\"},{\"access\":[\"1\"],\"skin\":\"\",\"skin_dark\":\"\",\"skin_admin\":\"\",\"skin_admin_dark\":\"\",\"toolbar_mode\":\"sliding\",\"drag_drop\":\"1\",\"path\":\"\",\"content_template_path\":\"\",\"entity_encoding\":\"raw\",\"lang_mode\":\"1\",\"lang_code\":\"\",\"text_direction\":\"ltr\",\"content_css\":\"1\",\"content_css_custom\":\"\",\"relative_urls\":\"1\",\"newlines\":\"0\",\"use_config_textfilters\":\"0\",\"invalid_elements\":\"script,applet,iframe\",\"valid_elements\":\"\",\"extended_elements\":\"\",\"sandbox_iframes\":\"1\",\"sandbox_iframes_exclusions\":\"\",\"resizing\":\"1\",\"resize_horizontal\":\"1\",\"element_path\":\"1\",\"wordcount\":\"1\",\"textpattern\":\"0\",\"image_advtab\":\"0\",\"advlist\":\"1\",\"contextmenu\":\"1\",\"paste_as_text\":\"0\",\"sourcecode\":\"1\",\"content_languages\":\"\",\"custom_plugin\":\"\",\"custom_button\":\"\",\"external_plugins\":\"\",\"link_classes_list\":\"\",\"img_classes_list\":\"\"}],\"toolbars\":[{\"menu\":[\"edit\",\"insert\",\"view\",\"format\",\"table\",\"tools\"],\"toolbar1\":[\"bold\",\"italic\",\"underline\",\"strikethrough\",\"|\",\"alignleft\",\"aligncenter\",\"alignright\",\"alignjustify\",\"|\",\"styles\",\"|\",\"blocks\",\"fontfamily\",\"fontsize\",\"|\",\"searchreplace\",\"|\",\"bullist\",\"numlist\",\"|\",\"outdent\",\"indent\",\"|\",\"undo\",\"redo\",\"|\",\"link\",\"unlink\",\"anchor\",\"image\",\"|\",\"code\",\"|\",\"forecolor\",\"backcolor\",\"|\",\"fullscreen\",\"|\",\"table\",\"|\",\"subscript\",\"superscript\",\"|\",\"charmap\",\"emoticons\",\"media\",\"hr\",\"ltr\",\"rtl\",\"|\",\"cut\",\"copy\",\"paste\",\"pastetext\",\"|\",\"visualchars\",\"visualblocks\",\"nonbreaking\",\"blockquote\",\"jtemplate\",\"|\",\"print\",\"preview\",\"codesample\",\"insertdatetime\",\"removeformat\",\"language\",\"abbr\",\"abbr_remove\"]},{\"menu\":[\"edit\",\"insert\",\"view\",\"format\",\"table\",\"tools\"],\"toolbar1\":[\"bold\",\"italic\",\"underline\",\"strikethrough\",\"|\",\"alignleft\",\"aligncenter\",\"alignright\",\"alignjustify\",\"|\",\"blocks\",\"|\",\"bullist\",\"numlist\",\"|\",\"outdent\",\"indent\",\"|\",\"undo\",\"redo\",\"|\",\"link\",\"unlink\",\"anchor\",\"code\",\"|\",\"hr\",\"table\",\"|\",\"subscript\",\"superscript\",\"|\",\"charmap\",\"pastetext\",\"preview\"]},{\"toolbar1\":[\"bold\",\"underline\",\"strikethrough\",\"|\",\"undo\",\"redo\",\"|\",\"bullist\",\"numlist\",\"|\",\"pastetext\"]}]},\"sets_amount\":3,\"html_height\":\"550px\",\"html_width\":\"100%\"}', '', NULL, NULL, 3, 0, ''),
 (119, 0, 'plg_extension_finder', 'plugin', 'finder', '', 'extension', 0, 1, 1, 0, 1, '{\"name\":\"plg_extension_finder\",\"type\":\"plugin\",\"creationDate\":\"2018-06\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2019 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_EXTENSION_FINDER_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Extension\\\\Finder\",\"filename\":\"finder\"}', '', '', NULL, NULL, 1, 0, NULL),
 (120, 0, 'plg_extension_joomla', 'plugin', 'joomla', '', 'extension', 0, 1, 1, 0, 1, '{\"name\":\"plg_extension_joomla\",\"type\":\"plugin\",\"creationDate\":\"2010-05\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2010 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_EXTENSION_JOOMLA_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Extension\\\\Joomla\",\"filename\":\"joomla\"}', '', '', NULL, NULL, 2, 0, NULL),
 (121, 0, 'plg_extension_joomlaupdate', 'plugin', 'joomlaupdate', '', 'extension', 0, 1, 1, 0, 1, '{\"name\":\"plg_extension_joomlaupdate\",\"type\":\"plugin\",\"creationDate\":\"2025-02\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2025 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"1.0.0\",\"description\":\"PLG_EXTENSION_JOOMLAUPDATE_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Extension\\\\Joomlaupdate\",\"filename\":\"joomlaupdate\"}', '', '', NULL, NULL, 3, 0, NULL),
@@ -834,9 +949,9 @@ INSERT INTO `amn_extensions` (`extension_id`, `package_id`, `name`, `type`, `ele
 (151, 0, 'plg_installer_webinstaller', 'plugin', 'webinstaller', '', 'installer', 0, 1, 1, 0, 1, '{\"name\":\"plg_installer_webinstaller\",\"type\":\"plugin\",\"creationDate\":\"2017-04\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_INSTALLER_WEBINSTALLER_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Installer\\\\Web\",\"filename\":\"webinstaller\"}', '{\"tab_position\":\"1\"}', '', NULL, NULL, 5, 0, NULL),
 (152, 0, 'plg_media-action_crop', 'plugin', 'crop', '', 'media-action', 0, 1, 1, 0, 1, '{\"name\":\"plg_media-action_crop\",\"type\":\"plugin\",\"creationDate\":\"2017-01\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2017 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_MEDIA-ACTION_CROP_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\MediaAction\\\\Crop\",\"filename\":\"crop\"}', '{}', '', NULL, NULL, 1, 0, NULL),
 (153, 0, 'plg_media-action_resize', 'plugin', 'resize', '', 'media-action', 0, 1, 1, 0, 1, '{\"name\":\"plg_media-action_resize\",\"type\":\"plugin\",\"creationDate\":\"2017-01\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2017 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_MEDIA-ACTION_RESIZE_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\MediaAction\\\\Resize\",\"filename\":\"resize\"}', '{}', '', NULL, NULL, 2, 0, NULL),
-(154, 0, 'plg_media-action_rotate', 'plugin', 'rotate', '', 'media-action', 0, 1, 1, 0, 1, '{\"name\":\"plg_media-action_rotate\",\"type\":\"plugin\",\"creationDate\":\"2017-01\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2017 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_MEDIA-ACTION_ROTATE_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\MediaAction\\\\Rotate\",\"filename\":\"rotate\"}', '{}', '', NULL, NULL, 3, 0, NULL),
-(155, 0, 'plg_privacy_actionlogs', 'plugin', 'actionlogs', '', 'privacy', 0, 1, 1, 0, 1, '{\"name\":\"plg_privacy_actionlogs\",\"type\":\"plugin\",\"creationDate\":\"2018-07\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.9.0\",\"description\":\"PLG_PRIVACY_ACTIONLOGS_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Privacy\\\\Actionlogs\",\"filename\":\"actionlogs\"}', '{}', '', NULL, NULL, 1, 0, NULL);
+(154, 0, 'plg_media-action_rotate', 'plugin', 'rotate', '', 'media-action', 0, 1, 1, 0, 1, '{\"name\":\"plg_media-action_rotate\",\"type\":\"plugin\",\"creationDate\":\"2017-01\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2017 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_MEDIA-ACTION_ROTATE_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\MediaAction\\\\Rotate\",\"filename\":\"rotate\"}', '{}', '', NULL, NULL, 3, 0, NULL);
 INSERT INTO `amn_extensions` (`extension_id`, `package_id`, `name`, `type`, `element`, `changelogurl`, `folder`, `client_id`, `enabled`, `access`, `protected`, `locked`, `manifest_cache`, `params`, `custom_data`, `checked_out`, `checked_out_time`, `ordering`, `state`, `note`) VALUES
+(155, 0, 'plg_privacy_actionlogs', 'plugin', 'actionlogs', '', 'privacy', 0, 1, 1, 0, 1, '{\"name\":\"plg_privacy_actionlogs\",\"type\":\"plugin\",\"creationDate\":\"2018-07\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.9.0\",\"description\":\"PLG_PRIVACY_ACTIONLOGS_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Privacy\\\\Actionlogs\",\"filename\":\"actionlogs\"}', '{}', '', NULL, NULL, 1, 0, NULL),
 (156, 0, 'plg_privacy_consents', 'plugin', 'consents', '', 'privacy', 0, 1, 1, 0, 1, '{\"name\":\"plg_privacy_consents\",\"type\":\"plugin\",\"creationDate\":\"2018-07\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.9.0\",\"description\":\"PLG_PRIVACY_CONSENTS_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Privacy\\\\Consents\",\"filename\":\"consents\"}', '{}', '', NULL, NULL, 2, 0, NULL),
 (157, 0, 'plg_privacy_contact', 'plugin', 'contact', '', 'privacy', 0, 1, 1, 0, 1, '{\"name\":\"plg_privacy_contact\",\"type\":\"plugin\",\"creationDate\":\"2018-07\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.9.0\",\"description\":\"PLG_PRIVACY_CONTACT_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Privacy\\\\Contact\",\"filename\":\"contact\"}', '{}', '', NULL, NULL, 3, 0, NULL),
 (158, 0, 'plg_privacy_content', 'plugin', 'content', '', 'privacy', 0, 1, 1, 0, 1, '{\"name\":\"plg_privacy_content\",\"type\":\"plugin\",\"creationDate\":\"2018-07\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.9.0\",\"description\":\"PLG_PRIVACY_CONTENT_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Privacy\\\\Content\",\"filename\":\"content\"}', '{}', '', NULL, NULL, 4, 0, NULL),
@@ -870,7 +985,7 @@ INSERT INTO `amn_extensions` (`extension_id`, `package_id`, `name`, `type`, `ele
 (186, 0, 'plg_system_httpheaders', 'plugin', 'httpheaders', '', 'system', 0, 1, 1, 0, 1, '{\"name\":\"plg_system_httpheaders\",\"type\":\"plugin\",\"creationDate\":\"2017-10\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_SYSTEM_HTTPHEADERS_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\System\\\\Httpheaders\",\"filename\":\"httpheaders\"}', '{}', '', NULL, NULL, 7, 0, NULL),
 (187, 0, 'plg_system_jooa11y', 'plugin', 'jooa11y', '', 'system', 0, 1, 1, 0, 1, '{\"name\":\"plg_system_jooa11y\",\"type\":\"plugin\",\"creationDate\":\"2022-02\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2021 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.2.0\",\"description\":\"PLG_SYSTEM_JOOA11Y_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\System\\\\Jooa11y\",\"filename\":\"jooa11y\"}', '', '', NULL, NULL, 8, 0, NULL),
 (188, 0, 'plg_system_languagecode', 'plugin', 'languagecode', '', 'system', 0, 0, 1, 0, 1, '{\"name\":\"plg_system_languagecode\",\"type\":\"plugin\",\"creationDate\":\"2011-11\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2011 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SYSTEM_LANGUAGECODE_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\System\\\\LanguageCode\",\"filename\":\"languagecode\"}', '', '', NULL, NULL, 9, 0, NULL),
-(189, 0, 'plg_system_languagefilter', 'plugin', 'languagefilter', '', 'system', 0, 0, 1, 0, 1, '{\"name\":\"plg_system_languagefilter\",\"type\":\"plugin\",\"creationDate\":\"2010-07\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2010 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SYSTEM_LANGUAGEFILTER_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\System\\\\LanguageFilter\",\"filename\":\"languagefilter\"}', '', '', NULL, NULL, 10, 0, NULL),
+(189, 0, 'plg_system_languagefilter', 'plugin', 'languagefilter', '', 'system', 0, 1, 1, 0, 1, '{\"name\":\"plg_system_languagefilter\",\"type\":\"plugin\",\"creationDate\":\"2010-07\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2010 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SYSTEM_LANGUAGEFILTER_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\System\\\\LanguageFilter\",\"filename\":\"languagefilter\"}', '', '', NULL, NULL, 10, 0, NULL),
 (190, 0, 'plg_system_log', 'plugin', 'log', '', 'system', 0, 1, 1, 0, 1, '{\"name\":\"plg_system_log\",\"type\":\"plugin\",\"creationDate\":\"2007-04\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2007 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_LOG_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\System\\\\Log\",\"filename\":\"log\"}', '', '', NULL, NULL, 11, 0, NULL),
 (191, 0, 'plg_system_logout', 'plugin', 'logout', '', 'system', 0, 1, 1, 0, 1, '{\"name\":\"plg_system_logout\",\"type\":\"plugin\",\"creationDate\":\"2009-04\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2009 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SYSTEM_LOGOUT_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\System\\\\Logout\",\"filename\":\"logout\"}', '', '', NULL, NULL, 12, 0, NULL),
 (192, 0, 'plg_system_privacyconsent', 'plugin', 'privacyconsent', '', 'system', 0, 0, 1, 0, 1, '{\"name\":\"plg_system_privacyconsent\",\"type\":\"plugin\",\"creationDate\":\"2018-04\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.9.0\",\"description\":\"PLG_SYSTEM_PRIVACYCONSENT_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\System\\\\PrivacyConsent\",\"filename\":\"privacyconsent\"}', '{}', '', NULL, NULL, 14, 0, NULL),
@@ -920,9 +1035,9 @@ INSERT INTO `amn_extensions` (`extension_id`, `package_id`, `name`, `type`, `ele
 (236, 0, 'plg_webservices_redirect', 'plugin', 'redirect', '', 'webservices', 0, 1, 1, 0, 1, '{\"name\":\"plg_webservices_redirect\",\"type\":\"plugin\",\"creationDate\":\"2019-09\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2019 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_WEBSERVICES_REDIRECT_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\WebServices\\\\Redirect\",\"filename\":\"redirect\"}', '{}', '', NULL, NULL, 15, 0, NULL),
 (237, 0, 'plg_webservices_tags', 'plugin', 'tags', '', 'webservices', 0, 1, 1, 0, 1, '{\"name\":\"plg_webservices_tags\",\"type\":\"plugin\",\"creationDate\":\"2019-09\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2019 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_WEBSERVICES_TAGS_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\WebServices\\\\Tags\",\"filename\":\"tags\"}', '{}', '', NULL, NULL, 16, 0, NULL),
 (238, 0, 'plg_webservices_templates', 'plugin', 'templates', '', 'webservices', 0, 1, 1, 0, 1, '{\"name\":\"plg_webservices_templates\",\"type\":\"plugin\",\"creationDate\":\"2019-09\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2019 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_WEBSERVICES_TEMPLATES_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\WebServices\\\\Templates\",\"filename\":\"templates\"}', '{}', '', NULL, NULL, 17, 0, NULL),
-(239, 0, 'plg_webservices_users', 'plugin', 'users', '', 'webservices', 0, 1, 1, 0, 1, '{\"name\":\"plg_webservices_users\",\"type\":\"plugin\",\"creationDate\":\"2019-09\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2019 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_WEBSERVICES_USERS_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\WebServices\\\\Users\",\"filename\":\"users\"}', '{}', '', NULL, NULL, 18, 0, NULL),
-(240, 0, 'plg_workflow_featuring', 'plugin', 'featuring', '', 'workflow', 0, 1, 1, 0, 1, '{\"name\":\"plg_workflow_featuring\",\"type\":\"plugin\",\"creationDate\":\"2020-03\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2020 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_WORKFLOW_FEATURING_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Workflow\\\\Featuring\",\"filename\":\"featuring\"}', '{}', '', NULL, NULL, 1, 0, NULL);
+(239, 0, 'plg_webservices_users', 'plugin', 'users', '', 'webservices', 0, 1, 1, 0, 1, '{\"name\":\"plg_webservices_users\",\"type\":\"plugin\",\"creationDate\":\"2019-09\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2019 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_WEBSERVICES_USERS_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\WebServices\\\\Users\",\"filename\":\"users\"}', '{}', '', NULL, NULL, 18, 0, NULL);
 INSERT INTO `amn_extensions` (`extension_id`, `package_id`, `name`, `type`, `element`, `changelogurl`, `folder`, `client_id`, `enabled`, `access`, `protected`, `locked`, `manifest_cache`, `params`, `custom_data`, `checked_out`, `checked_out_time`, `ordering`, `state`, `note`) VALUES
+(240, 0, 'plg_workflow_featuring', 'plugin', 'featuring', '', 'workflow', 0, 1, 1, 0, 1, '{\"name\":\"plg_workflow_featuring\",\"type\":\"plugin\",\"creationDate\":\"2020-03\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2020 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_WORKFLOW_FEATURING_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Workflow\\\\Featuring\",\"filename\":\"featuring\"}', '{}', '', NULL, NULL, 1, 0, NULL),
 (241, 0, 'plg_workflow_notification', 'plugin', 'notification', '', 'workflow', 0, 1, 1, 0, 1, '{\"name\":\"plg_workflow_notification\",\"type\":\"plugin\",\"creationDate\":\"2020-05\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2020 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_WORKFLOW_NOTIFICATION_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Workflow\\\\Notification\",\"filename\":\"notification\"}', '{}', '', NULL, NULL, 2, 0, NULL),
 (242, 0, 'plg_workflow_publishing', 'plugin', 'publishing', '', 'workflow', 0, 1, 1, 0, 1, '{\"name\":\"plg_workflow_publishing\",\"type\":\"plugin\",\"creationDate\":\"2020-03\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2020 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_WORKFLOW_PUBLISHING_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\Workflow\\\\Publishing\",\"filename\":\"publishing\"}', '{}', '', NULL, NULL, 3, 0, NULL),
 (243, 0, 'plg_system_guidedtours', 'plugin', 'guidedtours', '', 'system', 0, 1, 1, 0, 1, '{\"name\":\"plg_system_guidedtours\",\"type\":\"plugin\",\"creationDate\":\"2023-02\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2023 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.3.0\",\"description\":\"PLG_SYSTEM_GUIDEDTOURS_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Joomla\\\\Plugin\\\\System\\\\GuidedTours\",\"filename\":\"guidedtours\"}', '{}', '', NULL, NULL, 15, 0, NULL),
@@ -937,7 +1052,14 @@ INSERT INTO `amn_extensions` (`extension_id`, `package_id`, `name`, `type`, `ele
 (252, 255, 'Czech (Čeština)', 'language', 'cs-CZ', '', '', 0, 1, 0, 0, 0, '{\"name\":\"Czech (\\u010ce\\u0161tina)\",\"type\":\"language\",\"creationDate\":\"2026-04\",\"author\":\"Czech Translation Team\",\"copyright\":\"Copyright (C) 2005 - 2025 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.cz\",\"authorUrl\":\"www.joomlaportal.cz\",\"version\":\"6.1.1\",\"description\":\"cs-CZ - Site language\",\"group\":\"\",\"changelogurl\":\"\",\"filename\":\"install\"}', '{}', '', NULL, NULL, 0, 0, NULL),
 (253, 255, 'Czech (Čeština)', 'language', 'cs-CZ', '', '', 1, 1, 0, 0, 0, '{\"name\":\"Czech (\\u010ce\\u0161tina)\",\"type\":\"language\",\"creationDate\":\"2026-04\",\"author\":\"Czech Translation Team\",\"copyright\":\"Copyright (C) 2005 - 2025 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.cz\",\"authorUrl\":\"www.joomlaportal.cz\",\"version\":\"6.1.1\",\"description\":\"cs-CZ - Administration language\",\"group\":\"\",\"changelogurl\":\"\",\"filename\":\"install\"}', '{}', '', NULL, NULL, 0, 0, NULL),
 (254, 255, 'Czech (Čeština)', 'language', 'cs-CZ', '', '', 3, 1, 0, 0, 0, '{\"name\":\"Czech (\\u010ce\\u0161tina)\",\"type\":\"language\",\"creationDate\":\"2026-04\",\"author\":\"Czech Translation Team\",\"copyright\":\"Copyright (C) 2005 - 2025 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.cz\",\"authorUrl\":\"www.joomlaportal.cz\",\"version\":\"6.1.1\",\"description\":\"cs-CZ - API language\",\"group\":\"\",\"changelogurl\":\"\",\"filename\":\"install\"}', '{}', '', NULL, NULL, 0, 0, NULL),
-(255, 0, 'Czech (cs-CZ) Language Pack', 'package', 'pkg_cs-CZ', '', '', 0, 1, 1, 0, 0, '{\"name\":\"Czech (cs-CZ) Language Pack\",\"type\":\"package\",\"creationDate\":\"2026-04\",\"author\":\"Czech Translation Team\",\"copyright\":\"Copyright (C) 2005 - 2025 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.cz\",\"authorUrl\":\"www.joomlaportal.cz\",\"version\":\"6.1.1.1\",\"description\":\"cs-CZ language pack\",\"group\":\"\",\"changelogurl\":\"\",\"filename\":\"pkg_cs-CZ\"}', '{}', '', NULL, NULL, 0, 0, NULL);
+(255, 0, 'Czech (cs-CZ) Language Pack', 'package', 'pkg_cs-CZ', '', '', 0, 1, 1, 0, 0, '{\"name\":\"Czech (cs-CZ) Language Pack\",\"type\":\"package\",\"creationDate\":\"2026-04\",\"author\":\"Czech Translation Team\",\"copyright\":\"Copyright (C) 2005 - 2025 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.cz\",\"authorUrl\":\"www.joomlaportal.cz\",\"version\":\"6.1.1.1\",\"description\":\"cs-CZ language pack\",\"group\":\"\",\"changelogurl\":\"\",\"filename\":\"pkg_cs-CZ\"}', '{}', '', NULL, NULL, 0, 0, NULL),
+(256, 259, 'com_akeebabackup', 'component', 'com_akeebabackup', '', '', 1, 1, 0, 0, 0, '{\"name\":\"com_akeebabackup\",\"type\":\"component\",\"creationDate\":\"2026-08-26\",\"author\":\"Akeeba Ltd\",\"copyright\":\"Copyright (c)2006-2025 Akeeba Ltd \\/ Nicholas K. Dionysopoulos\",\"authorEmail\":\"no-reply@akeeba.com\",\"authorUrl\":\"www.akeeba.com\",\"version\":\"10.4.0\",\"description\":\"COM_AKEEBABACKUP_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Akeeba\\\\Component\\\\AkeebaBackup\",\"filename\":\"akeebabackup\"}', '{\"frontend_secret_word\":\"###AES128###cDquHS7YfLMYD664zIkIeEpQU1QEkvR0WL+TKkKYl3kwqTYKxzHl8funMM1O5H5LiCiSsVJ2lEmSoc\\/99M9O453abnNPJp15YAhjuKzHk7W95eWqSlBJVpYdobbn5hfTfdDEjUiBH2gAAAAA\",\"confwiz_upgrade\":1,\"siteurl\":\"http:\\/\\/localhost\\/\",\"jlibrariesdir\":\"C:\\/Users\\/libor\\/Documents\\/GitHub\\/amnachod\\/libraries\"}', '', NULL, NULL, 0, 0, NULL),
+(257, 259, 'PLG_QUICKICON_AKEEBABACKUP', 'plugin', 'akeebabackup', '', 'quickicon', 0, 1, 1, 0, 0, '{\"name\":\"PLG_QUICKICON_AKEEBABACKUP\",\"type\":\"plugin\",\"creationDate\":\"2026-08-26\",\"author\":\"Nicholas K. Dionysopoulos\",\"copyright\":\"Copyright (c)2006-2025 Akeeba Ltd \\/ Nicholas K. Dionysopoulos\",\"authorEmail\":\"nicholas@dionysopoulos.me\",\"authorUrl\":\"https:\\/\\/www.akeeba.com\",\"version\":\"10.4.0\",\"description\":\"PLG_QUICKICON_AKEEBABACKUP_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Akeeba\\\\Plugin\\\\QuickIcon\\\\AkeebaBackup\",\"filename\":\"akeebabackup\"}', '{\"enablewarning\":\"1\",\"warnfailed\":\"1\",\"maxbackupperiod\":\"24\",\"profileid\":\"1\"}', '', NULL, NULL, 0, 0, NULL),
+(258, 259, 'PLG_SYSTEM_AKWARN', 'plugin', 'akwarn', '', 'system', 0, 1, 1, 0, 0, '{\"name\":\"PLG_SYSTEM_AKWARN\",\"type\":\"plugin\",\"creationDate\":\"2026-08-26\",\"author\":\"Nicholas K. Dionysopoulos\",\"copyright\":\"Copyright (c)2006-2025 Akeeba Ltd \\/ Nicholas K. Dionysopoulos\",\"authorEmail\":\"nicholas@dionysopoulos.me\",\"authorUrl\":\"https:\\/\\/www.akeeba.com\",\"version\":\"10.4.0\",\"description\":\"PLG_SYSTEM_AKWARN_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"namespace\":\"Akeeba\\\\Plugin\\\\System\\\\AKWarn\",\"filename\":\"akwarn\"}', '{}', '', NULL, NULL, 0, 0, NULL),
+(259, 0, 'pkg_akeebabackup', 'package', 'pkg_akeebabackup', '', '', 0, 1, 1, 0, 0, '{\"name\":\"pkg_akeebabackup\",\"type\":\"package\",\"creationDate\":\"2026-08-26\",\"author\":\"Nicholas K. Dionysopoulos\",\"copyright\":\"Copyright (c)2006-2025 Nicholas K. Dionysopoulos \\/ Akeeba Ltd\",\"authorEmail\":\"\",\"authorUrl\":\"\",\"version\":\"10.4.0\",\"description\":\"PKG_AKEEBABACKUP_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"filename\":\"pkg_akeebabackup\"}', '{}', '', NULL, NULL, 0, 0, NULL),
+(260, 0, 'com_slideshowck', 'component', 'com_slideshowck', '', '', 1, 1, 0, 0, 0, '{\"name\":\"com_slideshowck\",\"type\":\"component\",\"creationDate\":\"April 2019\",\"author\":\"Cedric Keiflin\",\"copyright\":\"Copyright (C) 2019. All rights reserved.\",\"authorEmail\":\"ced1870@gmail.com\",\"authorUrl\":\"https:\\/\\/www.joomlack.fr\",\"version\":\"2.9.5\",\"description\":\"SLIDESHOWCK_DESC\",\"group\":\"\",\"changelogurl\":\"\",\"filename\":\"slideshowck\"}', '{}', '', NULL, NULL, 0, 0, NULL),
+(261, 0, 'Slideshow CK', 'module', 'mod_slideshowck', '', '', 0, 1, 0, 0, 0, '{\"name\":\"Slideshow CK\",\"type\":\"module\",\"creationDate\":\"Avril 2012\",\"author\":\"C\\u00e9dric KEIFLIN\",\"copyright\":\"C\\u00e9dric KEIFLIN\",\"authorEmail\":\"ced1870@gmail.com\",\"authorUrl\":\"https:\\/\\/www.joomlack.fr\",\"version\":\"2.9.5\",\"description\":\"SLIDESHOWCK_XML_DESCRIPTION\",\"group\":\"\",\"changelogurl\":\"\",\"filename\":\"mod_slideshowck\"}', '{\"source\":\"slidesmanager\",\"slides\":\"[{|qq|imgname|qq|:|qq|media\\/com_slideshowck\\/images\\/slides\\/bridge.jpg|qq|,|qq|imgcaption|qq|:|qq|This bridge is very long|qq|,|qq|imgtitle|qq|:|qq|This is a bridge|qq|,|qq|imgthumb|qq|:|qq|..\\/media\\/com_slideshowck\\/images\\/slides\\/bridge.jpg|qq|,|qq|imglink|qq|:|qq||qq|,|qq|imgtarget|qq|:|qq|default|qq|,|qq|imgalignment|qq|:|qq|default|qq|,|qq|imgvideo|qq|:|qq||qq|,|qq|slidearticleid|qq|:|qq||qq|,|qq|slidearticlename|qq|:|qq||qq|,|qq|imgtime|qq|:|qq||qq|},{|qq|imgname|qq|:|qq|media\\/com_slideshowck\\/images\\/slides\\/road.jpg|qq|,|qq|imgcaption|qq|:|qq|This slideshow uses a JQuery script adapted from Pixedelic|qq|,|qq|imgtitle|qq|:|qq|On the road again|qq|,|qq|imgthumb|qq|:|qq|..\\/media\\/com_slideshowck\\/images\\/slides\\/road.jpg|qq|,|qq|imglink|qq|:|qq||qq|,|qq|imgtarget|qq|:|qq|default|qq|,|qq|imgalignment|qq|:|qq|default|qq|,|qq|imgvideo|qq|:|qq||qq|,|qq|slidearticleid|qq|:|qq||qq|,|qq|slidearticlename|qq|:|qq||qq|,|qq|imgtime|qq|:|qq||qq|},{|qq|imgname|qq|:|qq|media\\/com_slideshowck\\/images\\/slides2\\/sea.jpg|qq|,|qq|imgcaption|qq|:|qq||qq|,|qq|imgtitle|qq|:|qq||qq|,|qq|imgthumb|qq|:|qq|..\\/media\\/com_slideshowck\\/images\\/slides2\\/sea.jpg|qq|,|qq|imglink|qq|:|qq||qq|,|qq|imgtarget|qq|:|qq|default|qq|,|qq|imgalignment|qq|:|qq|default|qq|,|qq|imgvideo|qq|:|qq||qq|,|qq|slidearticleid|qq|:|qq||qq|,|qq|slidearticlename|qq|:|qq||qq|,|qq|imgtime|qq|:|qq||qq|}]\",\"styles\":\"\",\"alignment\":\"center\",\"loader\":\"pie\",\"width\":\"auto\",\"height\":\"62%\",\"minheight\":\"150\",\"navigation\":\"2\",\"skin\":\"camera_amber_skin\",\"thumbnails\":\"1\",\"titleInThumbs\":\"0\",\"thumbnailwidth\":\"100\",\"thumbnailheight\":\"75\",\"pagination\":\"1\",\"displayorder\":\"normal\",\"limitslides\":\"\",\"usecaption\":\"1\",\"usetitle\":\"1\",\"usecaptiondesc\":\"1\",\"textlength\":\"\",\"striptags\":\"1\",\"linkposition\":\"fullslide\",\"linkbuttontext\":\"SLIDESHOWCK_LINK_BUTTON_TEXT\",\"linkbuttonclass\":\"btn\",\"linkautoimage\":\"0\",\"linktarget\":\"_parent\",\"effect\":\"random\",\"time\":\"7000\",\"transperiod\":\"1500\",\"captioneffect\":\"random\",\"captionTime\":\"\",\"captionOutEffect\":\"default\",\"captionOutEffectTime\":\"600\",\"portrait\":\"0\",\"autoAdvance\":\"1\",\"hover\":\"1\",\"keyboardnavigation\":\"0\",\"fullpage\":\"0\",\"container\":\"\",\"loadingdevice\":\"resolutionanddevices\",\"usemobileimage\":\"0\",\"mobileimageresolution\":\"640\",\"breakpoint1resolution\":\"\",\"breakpoint1height\":\"\",\"usecaptionresponsive\":\"1\",\"captionresponsiveresolution\":\"480\",\"captionresponsivefontsize\":\"0.6em\",\"captionresponsivehidecaption\":\"0\",\"captionresponsivehidedescription\":\"0\",\"loadjqueryeasing\":\"1\",\"autocreatethumbs\":\"1\",\"usethumbstype\":\"mini\",\"fixhtml\":\"0\",\"content_prepare\":\"1\",\"debug\":\"1\",\"loadinline\":\"0\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\"}', '', NULL, NULL, 0, 0, NULL),
+(262, 0, 'amswallow', 'template', 'amswallow', '', '', 0, 1, 1, 0, 0, '{\"name\":\"amswallow\",\"type\":\"template\",\"creationDate\":\"11\\/21\\/2015\",\"author\":\"Monika Ku\\u010derov\\u00e1, Libor \\u0160ti\\u0165\\u00e1k\",\"copyright\":\"Copyright (C) 2015\",\"authorEmail\":\"libor.stitak@gmail.com\",\"authorUrl\":\"\",\"version\":\"1.0\",\"description\":\"\\u0160ablona je ur\\u010den\\u00e1 pro web ACADEMII MERCURII st\\u0159edn\\u00ed soukrom\\u00e9 \\u0161koly, s.r.o.\",\"group\":\"\",\"changelogurl\":\"\",\"filename\":\"templateDetails\"}', '{}', '', NULL, NULL, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -949,24 +1071,24 @@ DROP TABLE IF EXISTS `amn_fields`;
 CREATE TABLE IF NOT EXISTS `amn_fields` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `asset_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `context` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `context` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `group_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `default_value` text COLLATE utf8mb4_unicode_ci,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `default_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `required` tinyint NOT NULL DEFAULT '0',
   `only_use_in_subform` tinyint NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fieldparams` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fieldparams` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `created_time` datetime NOT NULL,
   `created_user_id` int UNSIGNED NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL,
@@ -1004,16 +1126,16 @@ DROP TABLE IF EXISTS `amn_fields_groups`;
 CREATE TABLE IF NOT EXISTS `amn_fields_groups` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `asset_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `context` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `context` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `created` datetime NOT NULL,
   `created_by` int UNSIGNED NOT NULL DEFAULT '0',
   `modified` datetime NOT NULL,
@@ -1037,8 +1159,8 @@ CREATE TABLE IF NOT EXISTS `amn_fields_groups` (
 DROP TABLE IF EXISTS `amn_fields_values`;
 CREATE TABLE IF NOT EXISTS `amn_fields_values` (
   `field_id` int UNSIGNED NOT NULL,
-  `item_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Allow references to items which have strings as ids, eg. none db systems.',
-  `value` mediumtext COLLATE utf8mb4_unicode_ci,
+  `item_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Allow references to items which have strings as ids, eg. none db systems.',
+  `value` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   KEY `idx_field_id` (`field_id`),
   KEY `idx_item_id` (`item_id`(191))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1052,19 +1174,19 @@ CREATE TABLE IF NOT EXISTS `amn_fields_values` (
 DROP TABLE IF EXISTS `amn_finder_filters`;
 CREATE TABLE IF NOT EXISTS `amn_finder_filters` (
   `filter_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '1',
   `created` datetime NOT NULL,
   `created_by` int UNSIGNED NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int UNSIGNED NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `map_count` int UNSIGNED NOT NULL DEFAULT '0',
-  `data` text COLLATE utf8mb4_unicode_ci,
-  `params` mediumtext COLLATE utf8mb4_unicode_ci,
+  `data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `params` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`filter_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1077,16 +1199,16 @@ CREATE TABLE IF NOT EXISTS `amn_finder_filters` (
 DROP TABLE IF EXISTS `amn_finder_links`;
 CREATE TABLE IF NOT EXISTS `amn_finder_links` (
   `link_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `route` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(400) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `route` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `indexdate` datetime NOT NULL,
-  `md5sum` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `md5sum` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `published` tinyint NOT NULL DEFAULT '1',
   `state` int NOT NULL DEFAULT '1',
   `access` int NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `publish_start_date` datetime DEFAULT NULL,
   `publish_end_date` datetime DEFAULT NULL,
   `start_date` datetime DEFAULT NULL,
@@ -1129,8 +1251,8 @@ CREATE TABLE IF NOT EXISTS `amn_finder_links_terms` (
 
 DROP TABLE IF EXISTS `amn_finder_logging`;
 CREATE TABLE IF NOT EXISTS `amn_finder_logging` (
-  `searchterm` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `md5sum` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `searchterm` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `md5sum` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `query` blob NOT NULL,
   `hits` int NOT NULL DEFAULT '1',
   `results` int NOT NULL DEFAULT '0',
@@ -1151,12 +1273,12 @@ CREATE TABLE IF NOT EXISTS `amn_finder_taxonomy` (
   `lft` int NOT NULL DEFAULT '0',
   `rgt` int NOT NULL DEFAULT '0',
   `level` int UNSIGNED NOT NULL DEFAULT '0',
-  `path` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `alias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `path` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `state` tinyint UNSIGNED NOT NULL DEFAULT '1',
   `access` tinyint UNSIGNED NOT NULL DEFAULT '1',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `idx_state` (`state`),
   KEY `idx_access` (`access`),
@@ -1206,7 +1328,7 @@ CREATE TABLE IF NOT EXISTS `amn_finder_terms` (
   `weight` float UNSIGNED NOT NULL DEFAULT '0',
   `soundex` varchar(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `links` int NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`term_id`),
   UNIQUE KEY `idx_term_language` (`term`,`language`),
   KEY `idx_stem` (`stem`),
@@ -1225,7 +1347,7 @@ CREATE TABLE IF NOT EXISTS `amn_finder_terms` (
 DROP TABLE IF EXISTS `amn_finder_terms_common`;
 CREATE TABLE IF NOT EXISTS `amn_finder_terms_common` (
   `term` varchar(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `custom` int NOT NULL DEFAULT '0',
   UNIQUE KEY `idx_term_language` (`term`,`language`),
   KEY `idx_lang` (`language`)
@@ -1571,7 +1693,7 @@ CREATE TABLE IF NOT EXISTS `amn_finder_tokens` (
   `phrase` tinyint UNSIGNED NOT NULL DEFAULT '0',
   `weight` float UNSIGNED NOT NULL DEFAULT '1',
   `context` tinyint UNSIGNED NOT NULL DEFAULT '2',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   KEY `idx_word` (`term`),
   KEY `idx_stem` (`stem`),
   KEY `idx_context` (`context`),
@@ -1595,7 +1717,7 @@ CREATE TABLE IF NOT EXISTS `amn_finder_tokens_aggregate` (
   `context` tinyint UNSIGNED NOT NULL DEFAULT '2',
   `context_weight` float UNSIGNED NOT NULL DEFAULT '0',
   `total_weight` float UNSIGNED NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   KEY `token` (`term`),
   KEY `keyword_id` (`term_id`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1609,11 +1731,22 @@ CREATE TABLE IF NOT EXISTS `amn_finder_tokens_aggregate` (
 DROP TABLE IF EXISTS `amn_finder_types`;
 CREATE TABLE IF NOT EXISTS `amn_finder_types` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mime` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mime` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `title` (`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Vypisuji data pro tabulku `amn_finder_types`
+--
+
+INSERT INTO `amn_finder_types` (`id`, `title`, `mime`) VALUES
+(1, 'Category', ''),
+(2, 'Contact', ''),
+(3, 'Article', ''),
+(4, 'News Feed', ''),
+(5, 'Tag', '');
 
 -- --------------------------------------------------------
 
@@ -1624,12 +1757,12 @@ CREATE TABLE IF NOT EXISTS `amn_finder_types` (
 DROP TABLE IF EXISTS `amn_guidedtours`;
 CREATE TABLE IF NOT EXISTS `amn_guidedtours` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `uid` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `extensions` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extensions` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int NOT NULL DEFAULT '0',
   `modified` datetime NOT NULL,
@@ -1637,8 +1770,8 @@ CREATE TABLE IF NOT EXISTS `amn_guidedtours` (
   `checked_out_time` datetime DEFAULT NULL,
   `checked_out` int UNSIGNED DEFAULT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `language` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `access` int UNSIGNED NOT NULL DEFAULT '0',
   `autostart` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -1676,24 +1809,24 @@ DROP TABLE IF EXISTS `amn_guidedtour_steps`;
 CREATE TABLE IF NOT EXISTS `amn_guidedtour_steps` (
   `id` int NOT NULL AUTO_INCREMENT,
   `tour_id` int NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `position` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` int NOT NULL,
   `interactive_type` int NOT NULL DEFAULT '1',
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int UNSIGNED NOT NULL DEFAULT '0',
   `modified` datetime NOT NULL,
   `modified_by` int UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime DEFAULT NULL,
   `checked_out` int UNSIGNED DEFAULT NULL,
-  `language` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `params` text COLLATE utf8mb4_unicode_ci,
+  `language` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `idx_tour` (`tour_id`),
   KEY `idx_state` (`published`),
@@ -1832,13 +1965,13 @@ INSERT INTO `amn_guidedtour_steps` (`id`, `tour_id`, `title`, `published`, `desc
 DROP TABLE IF EXISTS `amn_history`;
 CREATE TABLE IF NOT EXISTS `amn_history` (
   `version_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `item_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `version_note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Optional version name',
+  `item_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `version_note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Optional version name',
   `save_date` datetime NOT NULL,
   `editor_user_id` int UNSIGNED NOT NULL DEFAULT '0',
   `character_count` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Number of characters in this version.',
-  `sha1_hash` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'SHA1 hash of the version_data column.',
-  `version_data` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'json-encoded string of version data',
+  `sha1_hash` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'SHA1 hash of the version_data column.',
+  `version_data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'json-encoded string of version data',
   `keep_forever` tinyint NOT NULL DEFAULT '0' COMMENT '0=auto delete; 1=keep',
   `is_current` tinyint NOT NULL DEFAULT '0',
   `is_legacy` tinyint NOT NULL DEFAULT '0',
@@ -1858,14 +1991,14 @@ CREATE TABLE IF NOT EXISTS `amn_languages` (
   `lang_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `asset_id` int UNSIGNED NOT NULL DEFAULT '0',
   `lang_code` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title_native` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sef` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sitename` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_native` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sef` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sitename` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `published` int NOT NULL DEFAULT '0',
   `access` int UNSIGNED NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0',
@@ -1882,7 +2015,7 @@ CREATE TABLE IF NOT EXISTS `amn_languages` (
 
 INSERT INTO `amn_languages` (`lang_id`, `asset_id`, `lang_code`, `title`, `title_native`, `sef`, `image`, `description`, `metakey`, `metadesc`, `sitename`, `published`, `access`, `ordering`) VALUES
 (1, 0, 'en-GB', 'English (en-GB)', 'English (United Kingdom)', 'en', 'en_gb', '', '', '', '', 1, 1, 2),
-(2, 100, 'cs-CZ', 'Czech (Čeština)', 'Čeština', 'cs', 'cs_cz', '', NULL, '', '', 0, 1, 1);
+(2, 100, 'cs-CZ', 'Czech (Čeština)', 'Čeština', 'cs', 'cs_cz', '', NULL, '', '', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1892,14 +2025,14 @@ INSERT INTO `amn_languages` (`lang_id`, `asset_id`, `lang_code`, `title`, `title
 
 DROP TABLE IF EXISTS `amn_mail_templates`;
 CREATE TABLE IF NOT EXISTS `amn_mail_templates` (
-  `template_id` varchar(127) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `extension` varchar(127) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `htmlbody` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `attachments` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `template_id` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extension` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `htmlbody` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attachments` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`template_id`,`language`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1951,13 +2084,13 @@ INSERT INTO `amn_mail_templates` (`template_id`, `extension`, `language`, `subje
 DROP TABLE IF EXISTS `amn_menu`;
 CREATE TABLE IF NOT EXISTS `amn_menu` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `menutype` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The display title of the menu item.',
+  `menutype` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The display title of the menu item.',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'The SEF alias of the menu item.',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `path` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The computed path of the menu item based on the alias field.',
-  `link` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The actually link the menu item refers to.',
-  `type` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of link: Component, URL, Alias, Separator',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `path` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The computed path of the menu item based on the alias field.',
+  `link` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The actually link the menu item refers to.',
+  `type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of link: Component, URL, Alias, Separator',
   `published` tinyint NOT NULL DEFAULT '0' COMMENT 'The published state of the menu link.',
   `parent_id` int UNSIGNED NOT NULL DEFAULT '1' COMMENT 'The parent menu item in the menu tree.',
   `level` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The relative level in the tree.',
@@ -1966,13 +2099,13 @@ CREATE TABLE IF NOT EXISTS `amn_menu` (
   `checked_out_time` datetime DEFAULT NULL COMMENT 'The time the menu item was checked out.',
   `browserNav` tinyint NOT NULL DEFAULT '0' COMMENT 'The click behaviour of the link.',
   `access` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The access level required to view the menu item.',
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The image of the menu item.',
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The image of the menu item.',
   `template_style_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded data for the menu item.',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded data for the menu item.',
   `lft` int NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
   `home` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Indicates if this menu item is the home or default page.',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `client_id` tinyint NOT NULL DEFAULT '0',
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
@@ -1984,14 +2117,14 @@ CREATE TABLE IF NOT EXISTS `amn_menu` (
   KEY `idx_alias` (`alias`(100)),
   KEY `idx_path` (`path`(100)),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Vypisuji data pro tabulku `amn_menu`
 --
 
 INSERT INTO `amn_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`, `publish_up`, `publish_down`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, NULL, NULL, 0, 0, '', 0, '', 0, 43, 0, '*', 0, NULL, NULL),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, NULL, NULL, 0, 0, '', 0, '', 0, 53, 0, '*', 0, NULL, NULL),
 (2, 'main', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 1, 1, 1, 3, NULL, NULL, 0, 0, 'class:bookmark', 0, '', 1, 10, 0, '*', 1, NULL, NULL),
 (3, 'main', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners&view=banners', 'component', 1, 2, 2, 3, NULL, NULL, 0, 0, 'class:banners', 0, '', 2, 3, 0, '*', 1, NULL, NULL),
 (4, 'main', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&view=categories&extension=com_banners', 'component', 1, 2, 2, 5, NULL, NULL, 0, 0, 'class:banners-cat', 0, '', 4, 5, 0, '*', 1, NULL, NULL),
@@ -2012,7 +2145,12 @@ INSERT INTO `amn_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `lin
 (19, 'main', 'com_finder_maps', 'Smart-Search-Maps', '', 'Smart Search/Maps', 'index.php?option=com_finder&view=maps', 'component', 1, 13, 2, 23, NULL, NULL, 0, 0, 'class:finder-maps', 0, '', 32, 33, 0, '*', 1, NULL, NULL),
 (20, 'main', 'com_finder_filters', 'Smart-Search-Filters', '', 'Smart Search/Filters', 'index.php?option=com_finder&view=filters', 'component', 1, 13, 2, 23, NULL, NULL, 0, 0, 'class:finder-filters', 0, '', 34, 35, 0, '*', 1, NULL, NULL),
 (21, 'main', 'com_finder_searches', 'Smart-Search-Searches', '', 'Smart Search/Searches', 'index.php?option=com_finder&view=searches', 'component', 1, 13, 2, 23, NULL, NULL, 0, 0, 'class:finder-searches', 0, '', 36, 37, 0, '*', 1, NULL, NULL),
-(101, 'mainmenu', 'Home', 'home', '', 'home', 'index.php?option=com_content&view=featured', 'component', 1, 1, 1, 19, NULL, NULL, 0, 1, '', 0, '{\"featured_categories\":[\"\"],\"layout_type\":\"blog\",\"blog_class_leading\":\"\",\"blog_class\":\"\",\"num_leading_articles\":\"1\",\"num_intro_articles\":\"3\",\"num_links\":\"0\",\"link_intro_image\":\"\",\"orderby_pri\":\"\",\"orderby_sec\":\"front\",\"order_date\":\"\",\"show_pagination\":\"2\",\"show_pagination_results\":\"1\",\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_readmore\":\"\",\"show_readmore_title\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"show_feed_link\":\"1\",\"feed_summary\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_image_css\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"1\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"robots\":\"\"}', 41, 42, 1, '*', 0, NULL, NULL);
+(101, 'mainmenu', 'Home', 'home', '', 'home', 'index.php?option=com_content&view=featured', 'component', 1, 1, 1, 19, NULL, NULL, 0, 1, '', 0, '{\"featured_categories\":[\"\"],\"layout_type\":\"blog\",\"blog_class_leading\":\"\",\"blog_class\":\"\",\"num_leading_articles\":\"1\",\"num_intro_articles\":\"3\",\"num_links\":\"0\",\"link_intro_image\":\"\",\"orderby_pri\":\"\",\"orderby_sec\":\"front\",\"order_date\":\"\",\"show_pagination\":\"2\",\"show_pagination_results\":\"1\",\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_readmore\":\"\",\"show_readmore_title\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"show_feed_link\":\"1\",\"feed_summary\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_image_css\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"1\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"robots\":\"\"}', 41, 42, 1, '*', 0, NULL, NULL),
+(102, 'main', 'COM_AKEEBABACKUP', 'com-akeebabackup', '', 'com-akeebabackup', 'index.php?option=com_akeebabackup', 'component', 1, 1, 1, 256, NULL, NULL, 0, 1, 'class:component', 0, '{}', 43, 52, 0, '', 1, NULL, NULL),
+(103, 'main', 'COM_AKEEBABACKUP_CONTROLPANEL', 'com-akeebabackup-controlpanel', '', 'com-akeebabackup/com-akeebabackup-controlpanel', 'index.php?option=com_akeebabackup&view=Controlpanel', 'component', 1, 102, 2, 256, NULL, NULL, 0, 1, 'class:component', 0, '{}', 44, 45, 0, '', 1, NULL, NULL),
+(104, 'main', 'COM_AKEEBABACKUP_CONFIGURATION', 'com-akeebabackup-configuration', '', 'com-akeebabackup/com-akeebabackup-configuration', 'index.php?option=com_akeebabackup&view=Configuration', 'component', 1, 102, 2, 256, NULL, NULL, 0, 1, 'class:component', 0, '{}', 46, 47, 0, '', 1, NULL, NULL),
+(105, 'main', 'COM_AKEEBABACKUP_BACKUP', 'com-akeebabackup-backup', '', 'com-akeebabackup/com-akeebabackup-backup', 'index.php?option=com_akeebabackup&view=Backup', 'component', 1, 102, 2, 256, NULL, NULL, 0, 1, 'class:component', 0, '{}', 48, 49, 0, '', 1, NULL, NULL),
+(106, 'main', 'COM_AKEEBABACKUP_MANAGE', 'com-akeebabackup-manage', '', 'com-akeebabackup/com-akeebabackup-manage', 'index.php?option=com_akeebabackup&view=Manage', 'component', 1, 102, 2, 256, NULL, NULL, 0, 1, 'class:component', 0, '{}', 50, 51, 0, '', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2024,9 +2162,9 @@ DROP TABLE IF EXISTS `amn_menu_types`;
 CREATE TABLE IF NOT EXISTS `amn_menu_types` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `asset_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `menutype` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(48) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `menutype` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(48) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `client_id` int NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -2055,8 +2193,8 @@ CREATE TABLE IF NOT EXISTS `amn_messages` (
   `date_time` datetime NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `priority` tinyint UNSIGNED NOT NULL DEFAULT '0',
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`message_id`),
   KEY `useridto_state` (`user_id_to`,`state`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2070,8 +2208,8 @@ CREATE TABLE IF NOT EXISTS `amn_messages` (
 DROP TABLE IF EXISTS `amn_messages_cfg`;
 CREATE TABLE IF NOT EXISTS `amn_messages_cfg` (
   `user_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `cfg_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `cfg_value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `cfg_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `cfg_value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   UNIQUE KEY `idx_user_var_name` (`user_id`,`cfg_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2085,27 +2223,27 @@ DROP TABLE IF EXISTS `amn_modules`;
 CREATE TABLE IF NOT EXISTS `amn_modules` (
   `id` int NOT NULL AUTO_INCREMENT,
   `asset_id` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `content` text COLLATE utf8mb4_unicode_ci,
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `ordering` int NOT NULL DEFAULT '0',
-  `position` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `position` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `module` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `module` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `access` int UNSIGNED NOT NULL DEFAULT '0',
   `showtitle` tinyint UNSIGNED NOT NULL DEFAULT '1',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `client_id` tinyint NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `published` (`published`,`access`),
   KEY `newsfeeds` (`module`,`published`),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Vypisuji data pro tabulku `amn_modules`
@@ -2147,7 +2285,8 @@ INSERT INTO `amn_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orderi
 (106, 83, 'Help Dashboard', '', '', 1, 'cpanel-help', NULL, NULL, NULL, NULL, 1, 'mod_submenu', 1, 0, '{\"menutype\":\"*\",\"preset\":\"help\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"style\":\"System-none\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}', 1, '*'),
 (107, 84, 'Privacy Requests', '', '', 1, 'cpanel-privacy', NULL, NULL, NULL, NULL, 1, 'mod_privacy_dashboard', 1, 1, '{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"cachemode\":\"static\",\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}', 1, '*'),
 (108, 85, 'Privacy Status', '', '', 1, 'cpanel-privacy', NULL, NULL, NULL, NULL, 1, 'mod_privacy_status', 1, 1, '{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"cachemode\":\"static\",\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}', 1, '*'),
-(109, 96, 'Guided Tours', '', '', 1, 'status', NULL, NULL, NULL, NULL, 1, 'mod_guidedtours', 1, 1, '', 1, '*');
+(109, 96, 'Guided Tours', '', '', 1, 'status', NULL, NULL, NULL, NULL, 1, 'mod_guidedtours', 1, 1, '', 1, '*'),
+(110, 103, 'Slideshow CK', '', '', 1, '', NULL, NULL, NULL, NULL, 0, 'mod_slideshowck', 1, 1, '', 0, '*');
 
 -- --------------------------------------------------------
 
@@ -2217,9 +2356,9 @@ DROP TABLE IF EXISTS `amn_newsfeeds`;
 CREATE TABLE IF NOT EXISTS `amn_newsfeeds` (
   `catid` int NOT NULL DEFAULT '0',
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `link` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `link` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `published` tinyint NOT NULL DEFAULT '0',
   `numarticles` int UNSIGNED NOT NULL DEFAULT '1',
   `cache_time` int UNSIGNED NOT NULL DEFAULT '3600',
@@ -2228,22 +2367,22 @@ CREATE TABLE IF NOT EXISTS `amn_newsfeeds` (
   `ordering` int NOT NULL DEFAULT '0',
   `rtl` tinyint NOT NULL DEFAULT '0',
   `access` int UNSIGNED NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int UNSIGNED NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int UNSIGNED NOT NULL DEFAULT '0',
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metadata` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metadata` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `version` int UNSIGNED NOT NULL DEFAULT '1',
   `hits` int UNSIGNED NOT NULL DEFAULT '0',
-  `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_access` (`access`),
   KEY `idx_checkout` (`checked_out`),
@@ -2262,9 +2401,9 @@ CREATE TABLE IF NOT EXISTS `amn_newsfeeds` (
 DROP TABLE IF EXISTS `amn_overrider`;
 CREATE TABLE IF NOT EXISTS `amn_overrider` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `constant` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `string` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `constant` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `string` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2278,17 +2417,17 @@ DROP TABLE IF EXISTS `amn_postinstall_messages`;
 CREATE TABLE IF NOT EXISTS `amn_postinstall_messages` (
   `postinstall_message_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `extension_id` bigint NOT NULL DEFAULT '700' COMMENT 'FK to #__extensions',
-  `title_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for the title',
-  `description_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for description',
-  `action_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `language_extension` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'com_postinstall' COMMENT 'Extension holding lang keys',
+  `title_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for the title',
+  `description_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for description',
+  `action_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language_extension` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'com_postinstall' COMMENT 'Extension holding lang keys',
   `language_client_id` tinyint NOT NULL DEFAULT '1',
-  `type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'link' COMMENT 'Message type - message, link, action',
-  `action_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'RAD URI to the PHP file containing action method',
-  `action` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'Action method name or URL',
-  `condition_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'RAD URI to file holding display condition method',
-  `condition_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Display condition method, must return boolean',
-  `version_introduced` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '3.2.0' COMMENT 'Version when this message was introduced',
+  `type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'link' COMMENT 'Message type - message, link, action',
+  `action_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'RAD URI to the PHP file containing action method',
+  `action` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'Action method name or URL',
+  `condition_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'RAD URI to file holding display condition method',
+  `condition_method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Display condition method, must return boolean',
+  `version_introduced` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '3.2.0' COMMENT 'Version when this message was introduced',
   `enabled` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`postinstall_message_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2316,10 +2455,10 @@ CREATE TABLE IF NOT EXISTS `amn_privacy_consents` (
   `user_id` int UNSIGNED NOT NULL DEFAULT '0',
   `state` int NOT NULL DEFAULT '1',
   `created` datetime NOT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `remind` tinyint NOT NULL DEFAULT '0',
-  `token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `idx_user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2333,11 +2472,11 @@ CREATE TABLE IF NOT EXISTS `amn_privacy_consents` (
 DROP TABLE IF EXISTS `amn_privacy_requests`;
 CREATE TABLE IF NOT EXISTS `amn_privacy_requests` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `requested_at` datetime NOT NULL,
   `status` tinyint NOT NULL DEFAULT '0',
-  `request_type` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `confirm_token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `request_type` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `confirm_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `confirm_token_created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2351,10 +2490,10 @@ CREATE TABLE IF NOT EXISTS `amn_privacy_requests` (
 DROP TABLE IF EXISTS `amn_redirect_links`;
 CREATE TABLE IF NOT EXISTS `amn_redirect_links` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `old_url` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `new_url` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `referer` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `old_url` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `new_url` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `referer` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `hits` int UNSIGNED NOT NULL DEFAULT '0',
   `published` tinyint NOT NULL,
   `created_date` datetime NOT NULL,
@@ -2374,8 +2513,8 @@ CREATE TABLE IF NOT EXISTS `amn_redirect_links` (
 DROP TABLE IF EXISTS `amn_scheduler_logs`;
 CREATE TABLE IF NOT EXISTS `amn_scheduler_logs` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `taskname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `tasktype` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'unique identifier for job defined by plugin',
+  `taskname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `tasktype` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'unique identifier for job defined by plugin',
   `duration` decimal(5,3) NOT NULL,
   `jobid` int UNSIGNED NOT NULL,
   `taskid` int UNSIGNED NOT NULL,
@@ -2399,10 +2538,10 @@ DROP TABLE IF EXISTS `amn_scheduler_tasks`;
 CREATE TABLE IF NOT EXISTS `amn_scheduler_tasks` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `asset_id` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `type` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'unique identifier for job defined by plugin',
-  `execution_rules` text COLLATE utf8mb4_unicode_ci COMMENT 'Execution Rules, Unprocessed',
-  `cron_rules` text COLLATE utf8mb4_unicode_ci COMMENT 'Processed execution rules, crontab-like JSON form',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `type` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'unique identifier for job defined by plugin',
+  `execution_rules` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Execution Rules, Unprocessed',
+  `cron_rules` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Processed execution rules, crontab-like JSON form',
   `state` tinyint NOT NULL DEFAULT '0',
   `last_exit_code` int NOT NULL DEFAULT '0' COMMENT 'Exit code when job was last run',
   `last_execution` datetime DEFAULT NULL COMMENT 'Timestamp of last run',
@@ -2413,8 +2552,8 @@ CREATE TABLE IF NOT EXISTS `amn_scheduler_tasks` (
   `priority` smallint NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0' COMMENT 'Configurable list ordering',
   `cli_exclusive` smallint NOT NULL DEFAULT '0' COMMENT 'If 1, the task is only accessible via CLI',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` text COLLATE utf8mb4_unicode_ci,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created` datetime NOT NULL,
   `created_by` int UNSIGNED NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
@@ -2449,9 +2588,9 @@ DROP TABLE IF EXISTS `amn_schemaorg`;
 CREATE TABLE IF NOT EXISTS `amn_schemaorg` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `itemId` int UNSIGNED DEFAULT NULL,
-  `context` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `schemaType` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `schema` text COLLATE utf8mb4_unicode_ci,
+  `context` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `schemaType` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `schema` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2464,7 +2603,7 @@ CREATE TABLE IF NOT EXISTS `amn_schemaorg` (
 DROP TABLE IF EXISTS `amn_schemas`;
 CREATE TABLE IF NOT EXISTS `amn_schemas` (
   `extension_id` int NOT NULL,
-  `version_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `version_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`extension_id`,`version_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2473,7 +2612,8 @@ CREATE TABLE IF NOT EXISTS `amn_schemas` (
 --
 
 INSERT INTO `amn_schemas` (`extension_id`, `version_id`) VALUES
-(247, '6.1.0-2026-03-13');
+(247, '6.1.0-2026-03-13'),
+(256, '9.4.0-20221011');
 
 -- --------------------------------------------------------
 
@@ -2487,9 +2627,9 @@ CREATE TABLE IF NOT EXISTS `amn_session` (
   `client_id` tinyint UNSIGNED DEFAULT NULL,
   `guest` tinyint UNSIGNED DEFAULT '1',
   `time` int NOT NULL DEFAULT '0',
-  `data` mediumtext COLLATE utf8mb4_unicode_ci,
+  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `userid` int DEFAULT '0',
-  `username` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `username` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
   PRIMARY KEY (`session_id`),
   KEY `userid` (`userid`),
   KEY `time` (`time`),
@@ -2501,7 +2641,24 @@ CREATE TABLE IF NOT EXISTS `amn_session` (
 --
 
 INSERT INTO `amn_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-(0x6d343233656d697069666c31307473643463303261306f327470, 1, 0, 1788908882, 'joomla|s:780:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjQ6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJjb3VudGVyIjtpOjE3O3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTc4ODkwODg0NztzOjQ6Imxhc3QiO2k6MTc4ODkwODg4MjtzOjM6Im5vdyI7aToxNzg4OTA4ODgyO31zOjU6InRva2VuIjtzOjMyOiJhNzVmZjExZmEzYjMyZWNhMTYxZDk5YmVlYjNlODdhNiI7fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjowOnt9czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjEyOiIAKgBzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7TzoyMDoiSm9vbWxhXENNU1xVc2VyXFVzZXIiOjE6e3M6MjoiaWQiO2k6MTQwO31zOjk6ImNvbV91c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMToibWZhX2NoZWNrZWQiO2k6MTt9fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 140, 'lstitak');
+(0x6d343233656d697069666c31307473643463303261306f327470, 1, 0, 1788910354, 'joomla|s:8340:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjc6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJjb3VudGVyIjtpOjE3NDtzOjU6InRpbWVyIjtPOjg6InN0ZENsYXNzIjozOntzOjU6InN0YXJ0IjtpOjE3ODg5MDg4NDc7czo0OiJsYXN0IjtpOjE3ODg5MTAzNTM7czozOiJub3ciO2k6MTc4ODkxMDM1Mzt9czo1OiJ0b2tlbiI7czozMjoiYTc1ZmYxMWZhM2IzMmVjYTE2MWQ5OWJlZWIzZTg3YTYiO31zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjM6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6NTp7czoxMzoiY29tX2luc3RhbGxlciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJtZXNzYWdlIjtzOjA6IiI7czoxNzoiZXh0ZW5zaW9uX21lc3NhZ2UiO3M6MDoiIjtzOjEyOiJyZWRpcmVjdF91cmwiO047fXM6MTA6ImNvbV9jb25maWciO086ODoic3RkQ2xhc3MiOjE6e3M6NjoiY29uZmlnIjtPOjg6InN0ZENsYXNzIjoxOntzOjY6Imdsb2JhbCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJkYXRhIjthOjEwMzp7czo3OiJjYWNoaW5nIjtpOjA7czoxMzoiY2FjaGVfaGFuZGxlciI7czo0OiJmaWxlIjtzOjIwOiJjYWNoZV9wbGF0Zm9ybXByZWZpeCI7YjowO3M6OToiY2FjaGV0aW1lIjtpOjE1O3M6MTA6ImNhY2hlX3BhdGgiO3M6MDoiIjtzOjE3OiJtZW1jYWNoZWRfcGVyc2lzdCI7YjoxO3M6MTg6Im1lbWNhY2hlZF9jb21wcmVzcyI7YjowO3M6MjE6Im1lbWNhY2hlZF9zZXJ2ZXJfaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6MjE6Im1lbWNhY2hlZF9zZXJ2ZXJfcG9ydCI7aToxMTIxMTtzOjEzOiJyZWRpc19wZXJzaXN0IjtiOjE7czoxNzoicmVkaXNfc2VydmVyX2hvc3QiO3M6OToibG9jYWxob3N0IjtzOjE3OiJyZWRpc19zZXJ2ZXJfcG9ydCI7aTo2Mzc5O3M6MTc6InJlZGlzX3NlcnZlcl9hdXRoIjtzOjA6IiI7czoxNToicmVkaXNfc2VydmVyX2RiIjtpOjA7czo2OiJkYnR5cGUiO3M6NjoibXlzcWxpIjtzOjQ6Imhvc3QiO3M6OToibG9jYWxob3N0IjtzOjQ6InVzZXIiO3M6ODoiYW1uYWNob2QiO3M6ODoicGFzc3dvcmQiO3M6ODoiQU1OLC4xMjMiO3M6MjoiZGIiO3M6ODoiYW1uYWNob2QiO3M6ODoiZGJwcmVmaXgiO3M6NDoiYW1uXyI7czoxMjoiZGJlbmNyeXB0aW9uIjtpOjA7czo4OiJkYnNzbGtleSI7czowOiIiO3M6OToiZGJzc2xjZXJ0IjtzOjA6IiI7czoyMToiZGJzc2x2ZXJpZnlzZXJ2ZXJjZXJ0IjtiOjA7czo3OiJkYnNzbGNhIjtzOjA6IiI7czoxMToiZGJzc2xjaXBoZXIiO3M6MDoiIjtzOjU6ImRlYnVnIjtiOjA7czoxMDoiZGVidWdfbGFuZyI7YjowO3M6MTY6ImRlYnVnX2xhbmdfY29uc3QiO2I6MTtzOjQ6ImNvcnMiO2I6MDtzOjE3OiJjb3JzX2FsbG93X29yaWdpbiI7czoxOiIqIjtzOjE4OiJjb3JzX2FsbG93X2hlYWRlcnMiO3M6NDE6IkNvbnRlbnQtVHlwZSxYLUpvb21sYS1Ub2tlbixBdXRob3JpemF0aW9uIjtzOjE4OiJjb3JzX2FsbG93X21ldGhvZHMiO3M6MDoiIjtzOjE5OiJiZWhpbmRfbG9hZGJhbGFuY2VyIjtiOjA7czoxMjoicHJveHlfZW5hYmxlIjtiOjA7czoxMDoicHJveHlfaG9zdCI7czowOiIiO3M6MTA6InByb3h5X3BvcnQiO3M6MDoiIjtzOjEwOiJwcm94eV91c2VyIjtzOjA6IiI7czo2OiJvZmZzZXQiO3M6MzoiVVRDIjtzOjEwOiJtYWlsb25saW5lIjtiOjE7czoxMToibWFzc21haWxvZmYiO2I6MDtzOjg6Im1haWxmcm9tIjtzOjIyOiJsaWJvci5zdGl0YWtAZ21haWwuY29tIjtzOjg6ImZyb21uYW1lIjtzOjE3OiJBQ0FERU1JQSBNRVJDVVJJSSI7czo3OiJyZXBseXRvIjtzOjA6IiI7czoxMToicmVwbHl0b25hbWUiO3M6MDoiIjtzOjY6Im1haWxlciI7czo0OiJtYWlsIjtzOjg6InNlbmRtYWlsIjtzOjE4OiIvdXNyL3NiaW4vc2VuZG1haWwiO3M6ODoic210cGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjg6InNtdHBwb3J0IjtpOjI1O3M6MTA6InNtdHBzZWN1cmUiO3M6NDoibm9uZSI7czo4OiJzbXRwYXV0aCI7YjowO3M6ODoic210cHVzZXIiO3M6MDoiIjtzOjg6InNtdHBwYXNzIjtzOjA6IiI7czo4OiJNZXRhRGVzYyI7czo2MToiQWNhZGVtaWEgTWVyY3VyaWk6IFNvdWtyb23DoSBzdMWZZWRuw60gxaFrb2xhIHJvZGlubsOpaG8gdHlwdSI7czo2OiJyb2JvdHMiO3M6MDoiIjtzOjEwOiJNZXRhUmlnaHRzIjtzOjA6IiI7czoxMDoiTWV0YUF1dGhvciI7YjoxO3M6MTE6Ik1ldGFWZXJzaW9uIjtiOjA7czozOiJzZWYiO2I6MTtzOjExOiJzZWZfcmV3cml0ZSI7YjowO3M6MTA6InNlZl9zdWZmaXgiO2I6MDtzOjEyOiJ1bmljb2Rlc2x1Z3MiO2I6MDtzOjE5OiJzaXRlbmFtZV9wYWdldGl0bGVzIjtpOjA7czo4OiJ0bXBfcGF0aCI7czo0NDoiQzpcVXNlcnNcbGlib3JcRG9jdW1lbnRzXEdpdEh1YlxhbW5hY2hvZC90bXAiO3M6NDoiZ3ppcCI7YjowO3M6MTU6ImVycm9yX3JlcG9ydGluZyI7czo3OiJkZWZhdWx0IjtzOjk6ImZvcmNlX3NzbCI7aTowO3M6MTU6InNlc3Npb25faGFuZGxlciI7czo4OiJkYXRhYmFzZSI7czoyMzoic2Vzc2lvbl9maWxlc3lzdGVtX3BhdGgiO3M6MDoiIjtzOjI5OiJzZXNzaW9uX21lbWNhY2hlZF9zZXJ2ZXJfaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6Mjk6InNlc3Npb25fbWVtY2FjaGVkX3NlcnZlcl9wb3J0IjtpOjExMjExO3M6MjE6InNlc3Npb25fcmVkaXNfcGVyc2lzdCI7aToxO3M6MjU6InNlc3Npb25fcmVkaXNfc2VydmVyX2hvc3QiO3M6OToibG9jYWxob3N0IjtzOjI1OiJzZXNzaW9uX3JlZGlzX3NlcnZlcl9wb3J0IjtpOjYzNzk7czoyNToic2Vzc2lvbl9yZWRpc19zZXJ2ZXJfYXV0aCI7czowOiIiO3M6MjM6InNlc3Npb25fcmVkaXNfc2VydmVyX2RiIjtpOjA7czo4OiJsaWZldGltZSI7aToxNTtzOjE0OiJzaGFyZWRfc2Vzc2lvbiI7YjowO3M6MTY6InNlc3Npb25fbWV0YWRhdGEiO2I6MTtzOjI2OiJzZXNzaW9uX21ldGFkYXRhX2Zvcl9ndWVzdCI7YjoxO3M6ODoic2l0ZW5hbWUiO3M6MTc6IkFDQURFTUlBIE1FUkNVUklJIjtzOjc6Im9mZmxpbmUiO2I6MDtzOjIzOiJkaXNwbGF5X29mZmxpbmVfbWVzc2FnZSI7aToxO3M6MTU6Im9mZmxpbmVfbWVzc2FnZSI7czo3OToiU3Ryw6Fua3kganNvdSB6IGTFr3ZvZHUgw7pkcsW+YnkgbWltbyBwcm92b3ouPGJyIC8+IFprdXN0ZSB0byBwcm9zw61tIHBvemTEm2ppLiI7czoxMzoib2ZmbGluZV9pbWFnZSI7czowOiIiO3M6MTI6ImZyb250ZWRpdGluZyI7aToxO3M6NjoiZWRpdG9yIjtzOjc6InRpbnltY2UiO3M6NzoiY2FwdGNoYSI7czoxOiIwIjtzOjY6ImFjY2VzcyI7aToxO3M6MTA6Imxpc3RfbGltaXQiO2k6MjA7czoxMDoiZmVlZF9saW1pdCI7aToxMDtzOjEwOiJmZWVkX2VtYWlsIjtzOjY6ImF1dGhvciI7czo4OiJsb2dfcGF0aCI7czo1OToiQzpcVXNlcnNcbGlib3JcRG9jdW1lbnRzXEdpdEh1YlxhbW5hY2hvZFxhZG1pbmlzdHJhdG9yL2xvZ3MiO3M6MTQ6ImxvZ19ldmVyeXRoaW5nIjtpOjA7czoxNDoibG9nX2RlcHJlY2F0ZWQiO2k6MDtzOjE0OiJsb2dfcHJpb3JpdGllcyI7YToxOntpOjA7czozOiJhbGwiO31zOjE0OiJsb2dfY2F0ZWdvcmllcyI7czowOiIiO3M6MTc6ImxvZ19jYXRlZ29yeV9tb2RlIjtpOjA7czoxMzoiY29va2llX2RvbWFpbiI7czowOiIiO3M6MTE6ImNvb2tpZV9wYXRoIjtzOjA6IiI7czo1OiJydWxlcyI7YToxMzp7czoxNToiY29yZS5sb2dpbi5zaXRlIjthOjI6e2k6NjtiOjE7aToyO2I6MTt9czoxNjoiY29yZS5sb2dpbi5hZG1pbiI7YToxOntpOjY7YjoxO31zOjE0OiJjb3JlLmxvZ2luLmFwaSI7YToxOntpOjg7YjoxO31zOjE4OiJjb3JlLmxvZ2luLm9mZmxpbmUiO2E6MTp7aTo2O2I6MTt9czoxMDoiY29yZS5hZG1pbiI7YToxOntpOjg7YjoxO31zOjEyOiJjb3JlLm9wdGlvbnMiO2E6MDp7fXM6MTE6ImNvcmUubWFuYWdlIjthOjE6e2k6NztiOjE7fXM6MTE6ImNvcmUuY3JlYXRlIjthOjI6e2k6NjtiOjE7aTozO2I6MTt9czoxMToiY29yZS5kZWxldGUiO2E6MTp7aTo2O2I6MTt9czo5OiJjb3JlLmVkaXQiO2E6Mjp7aTo2O2I6MTtpOjQ7YjoxO31zOjE1OiJjb3JlLmVkaXQuc3RhdGUiO2E6Mjp7aTo2O2I6MTtpOjU7YjoxO31zOjEzOiJjb3JlLmVkaXQub3duIjthOjI6e2k6NjtiOjE7aTozO2I6MTt9czoxNToiY29yZS5lZGl0LnZhbHVlIjthOjA6e319czo3OiJmaWx0ZXJzIjthOjk6e2k6MTthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6Ik5IIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6OTthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6Ik5IIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6NjthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6IkJMIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6NzthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6IkJMIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6MjthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6Ik5IIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6MzthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6IkJMIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6NDthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6IkJMIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6NTthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6IkJMIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6ODthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjQ6Ik5PTkUiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9fXM6ODoiYXNzZXRfaWQiO3M6MToiMSI7fX19fXM6MTY6ImNvbV9ha2VlYmFiYWNrdXAiO086ODoic3RkQ2xhc3MiOjE6e3M6MTA6InN0YXRpc3RpY3MiO086ODoic3RkQ2xhc3MiOjI6e3M6ODoib3JkZXJjb2wiO047czo5OiJvcmRlcmRpcm4iO047fX1zOjExOiJjb21fcGx1Z2lucyI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo3OiJwbHVnaW5zIjtPOjg6InN0ZENsYXNzIjozOntzOjY6ImZpbHRlciI7YTo1OntzOjY6InNlYXJjaCI7czozOiJ0aW4iO3M6NzoiZW5hYmxlZCI7czowOiIiO3M6NjoiZm9sZGVyIjtzOjA6IiI7czo3OiJlbGVtZW50IjtzOjA6IiI7czo2OiJhY2Nlc3MiO3M6MDoiIjt9czo0OiJsaXN0IjthOjQ6e3M6MTI6ImZ1bGxvcmRlcmluZyI7czoxMDoiZm9sZGVyIEFTQyI7czo1OiJsaW1pdCI7czoyOiIyMCI7czo5OiJzb3J0VGFibGUiO3M6NjoiZm9sZGVyIjtzOjE0OiJkaXJlY3Rpb25UYWJsZSI7czozOiJBU0MiO31zOjEwOiJsaW1pdHN0YXJ0IjtpOjA7fXM6NDoiZWRpdCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo2OiJwbHVnaW4iO086ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2E6MDp7fXM6NDoiZGF0YSI7Tjt9fX1zOjEzOiJjb21fdGVtcGxhdGVzIjtPOjg6InN0ZENsYXNzIjoxOntzOjY6InN0eWxlcyI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo5OiJjbGllbnRfaWQiO3M6MToiMCI7czo0OiJsaXN0IjthOjQ6e3M6OToiZGlyZWN0aW9uIjtzOjM6ImFzYyI7czo1OiJsaW1pdCI7aToyMDtzOjg6Im9yZGVyaW5nIjtzOjEwOiJhLnRlbXBsYXRlIjtzOjU6InN0YXJ0IjtkOjA7fX19fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086MjA6Ikpvb21sYVxDTVNcVXNlclxVc2VyIjoxOntzOjI6ImlkIjtpOjE0MDt9czo5OiJjb21fdXNlcnMiO086ODoic3RkQ2xhc3MiOjE6e3M6MTE6Im1mYV9jaGVja2VkIjtpOjE7fXM6ODoib3ZlcnJpZGUiO086ODoic3RkQ2xhc3MiOjA6e31zOjExOiJhcHBsaWNhdGlvbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJxdWV1ZSI7YTowOnt9fXM6MTI6ImFrZWViYWJhY2t1cCI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo3OiJwcm9maWxlIjtpOjE7czoxMjoiYmFja3VwdG9rZW5zIjthOjA6e319fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 140, 'lstitak');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `amn_slideshowck_styles`
+--
+
+DROP TABLE IF EXISTS `amn_slideshowck_styles`;
+CREATE TABLE IF NOT EXISTS `amn_slideshowck_styles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `state` int NOT NULL DEFAULT '1',
+  `params` longtext NOT NULL,
+  `layoutcss` text NOT NULL,
+  `checked_out` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2516,28 +2673,28 @@ CREATE TABLE IF NOT EXISTS `amn_tags` (
   `lft` int NOT NULL DEFAULT '0',
   `rgt` int NOT NULL DEFAULT '0',
   `level` int UNSIGNED NOT NULL DEFAULT '0',
-  `path` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `access` int UNSIGNED NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metadesc` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The meta description for the page.',
-  `metakey` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The keywords for the page.',
-  `metadata` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded metadata properties.',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metadesc` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The meta description for the page.',
+  `metakey` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The keywords for the page.',
+  `metadata` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded metadata properties.',
   `created_user_id` int UNSIGNED NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL,
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified_user_id` int UNSIGNED NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL,
-  `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `urls` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `urls` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `hits` int UNSIGNED NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `version` int UNSIGNED NOT NULL DEFAULT '1',
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
@@ -2567,11 +2724,11 @@ INSERT INTO `amn_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title
 DROP TABLE IF EXISTS `amn_template_overrides`;
 CREATE TABLE IF NOT EXISTS `amn_template_overrides` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `template` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `hash_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `template` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `hash_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `extension_id` int DEFAULT '0',
   `state` tinyint NOT NULL DEFAULT '0',
-  `action` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `action` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `client_id` tinyint UNSIGNED NOT NULL DEFAULT '0',
   `created_date` datetime NOT NULL,
   `modified_date` datetime DEFAULT NULL,
@@ -2589,18 +2746,18 @@ CREATE TABLE IF NOT EXISTS `amn_template_overrides` (
 DROP TABLE IF EXISTS `amn_template_styles`;
 CREATE TABLE IF NOT EXISTS `amn_template_styles` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `template` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `template` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `client_id` tinyint UNSIGNED NOT NULL DEFAULT '0',
-  `home` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `home` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `inheritable` tinyint NOT NULL DEFAULT '0',
-  `parent` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parent` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_template` (`template`),
   KEY `idx_client_id` (`client_id`),
   KEY `idx_client_id_home` (`client_id`,`home`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Vypisuji data pro tabulku `amn_template_styles`
@@ -2608,8 +2765,9 @@ CREATE TABLE IF NOT EXISTS `amn_template_styles` (
 
 INSERT INTO `amn_template_styles` (`id`, `template`, `client_id`, `home`, `title`, `inheritable`, `parent`, `params`) VALUES
 (10, 'atum', 1, '1', 'Atum - Default', 1, '', '{\"hue\":\"hsl(214, 63%, 20%)\",\"bg-light\":\"#f0f4fb\",\"text-dark\":\"#495057\",\"text-light\":\"#ffffff\",\"link-color\":\"#2a69b8\",\"special-color\":\"#001b4c\",\"colorScheme\":\"os\",\"monochrome\":\"0\",\"loginLogo\":\"\",\"loginLogoAlt\":\"\",\"logoBrandLarge\":\"\",\"logoBrandLargeAlt\":\"\",\"logoBrandSmall\":\"\",\"logoBrandSmallAlt\":\"\"}'),
-(11, 'cassiopeia', 0, '1', 'Cassiopeia - Default', 1, '', '{\"brand\":\"1\",\"logoFile\":\"\",\"siteTitle\":\"\",\"siteDescription\":\"\",\"useFontScheme\":\"0\",\"colorName\":\"colors_standard\",\"fluidContainer\":\"0\",\"stickyHeader\":0,\"backTop\":0}'),
-(12, 'cassiopeia_extended', 0, '0', 'Cassiopeia Extended - Default', 0, 'cassiopeia', '{\"brand\":\"1\",\"logoFile\":\"\",\"siteTitle\":\"\",\"siteDescription\":\"\",\"useFontScheme\":\"0\",\"systemFontBody\":\"\",\"systemFontHeading\":\"\",\"colorName\":\"colors_standard\",\"fluidContainer\":\"0\",\"stickyHeader\":\"0\",\"backTop\":\"0\",\"colorSettings\":\"0\",\"headerbg\":\"rgb(193, 205, 207)\",\"headercolor\":\"rgb(23, 23, 23)\",\"bodybg\":\"rgb(254, 254, 254)\",\"bodycolor\":\"rgb(23, 23, 23)\",\"linkcolor\":\"rgb(29, 121, 137)\",\"linkcolorh\":\"rgb(14, 59, 67)\",\"btnbg\":\"rgb(206, 60, 55)\",\"btnbgh\":\"rgb(131, 35, 32)\",\"btncolor\":\"rgb(254, 254, 254)\",\"btncolorh\":\"rgb(254, 254, 254)\",\"footerbg\":\"rgb(29, 121, 137)\",\"footercolor\":\"rgb(254, 254, 254)\",\"fontSettings\":\"0\",\"bodysize\":\"1\",\"h1size\":\"2\",\"h2size\":\"1.7\",\"h3size\":\"1.5\"}');
+(11, 'cassiopeia', 0, '0', 'Cassiopeia - Default', 1, '', '{\"brand\":\"1\",\"logoFile\":\"\",\"siteTitle\":\"\",\"siteDescription\":\"\",\"useFontScheme\":\"0\",\"colorName\":\"colors_standard\",\"fluidContainer\":\"0\",\"stickyHeader\":0,\"backTop\":0}'),
+(12, 'cassiopeia_extended', 0, '0', 'Cassiopeia Extended - Default', 0, 'cassiopeia', '{\"brand\":\"1\",\"logoFile\":\"\",\"siteTitle\":\"\",\"siteDescription\":\"\",\"useFontScheme\":\"0\",\"systemFontBody\":\"\",\"systemFontHeading\":\"\",\"colorName\":\"colors_standard\",\"fluidContainer\":\"0\",\"stickyHeader\":\"0\",\"backTop\":\"0\",\"colorSettings\":\"0\",\"headerbg\":\"rgb(193, 205, 207)\",\"headercolor\":\"rgb(23, 23, 23)\",\"bodybg\":\"rgb(254, 254, 254)\",\"bodycolor\":\"rgb(23, 23, 23)\",\"linkcolor\":\"rgb(29, 121, 137)\",\"linkcolorh\":\"rgb(14, 59, 67)\",\"btnbg\":\"rgb(206, 60, 55)\",\"btnbgh\":\"rgb(131, 35, 32)\",\"btncolor\":\"rgb(254, 254, 254)\",\"btncolorh\":\"rgb(254, 254, 254)\",\"footerbg\":\"rgb(29, 121, 137)\",\"footercolor\":\"rgb(254, 254, 254)\",\"fontSettings\":\"0\",\"bodysize\":\"1\",\"h1size\":\"2\",\"h2size\":\"1.7\",\"h3size\":\"1.5\"}'),
+(13, 'amswallow', 0, '1', 'amswallow - výchozí', 0, '', '{}');
 
 -- --------------------------------------------------------
 
@@ -2621,11 +2779,11 @@ DROP TABLE IF EXISTS `amn_tuf_metadata`;
 CREATE TABLE IF NOT EXISTS `amn_tuf_metadata` (
   `id` int NOT NULL AUTO_INCREMENT,
   `update_site_id` int DEFAULT '0',
-  `root` text COLLATE utf8mb4_unicode_ci,
-  `targets` text COLLATE utf8mb4_unicode_ci,
-  `snapshot` text COLLATE utf8mb4_unicode_ci,
-  `timestamp` text COLLATE utf8mb4_unicode_ci,
-  `mirrors` text COLLATE utf8mb4_unicode_ci,
+  `root` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `targets` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `snapshot` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `timestamp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `mirrors` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Secure TUF Updates';
 
@@ -2663,34 +2821,34 @@ CREATE TABLE IF NOT EXISTS `amn_ucm_base` (
 DROP TABLE IF EXISTS `amn_ucm_content`;
 CREATE TABLE IF NOT EXISTS `amn_ucm_content` (
   `core_content_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `core_type_alias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
-  `core_title` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `core_type_alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
+  `core_title` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `core_alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `core_body` mediumtext COLLATE utf8mb4_unicode_ci,
+  `core_body` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `core_state` tinyint NOT NULL DEFAULT '0',
   `core_checked_out_time` datetime DEFAULT NULL,
   `core_checked_out_user_id` int UNSIGNED DEFAULT NULL,
   `core_access` int UNSIGNED NOT NULL DEFAULT '0',
-  `core_params` text COLLATE utf8mb4_unicode_ci,
+  `core_params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `core_featured` tinyint UNSIGNED NOT NULL DEFAULT '0',
-  `core_metadata` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'JSON encoded metadata properties.',
+  `core_metadata` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'JSON encoded metadata properties.',
   `core_created_user_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `core_created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `core_created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `core_created_time` datetime NOT NULL,
   `core_modified_user_id` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Most recent user that modified',
   `core_modified_time` datetime NOT NULL,
-  `core_language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `core_language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `core_publish_up` datetime DEFAULT NULL,
   `core_publish_down` datetime DEFAULT NULL,
   `core_content_item_id` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'ID from the individual type table',
   `asset_id` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `core_images` text COLLATE utf8mb4_unicode_ci,
-  `core_urls` text COLLATE utf8mb4_unicode_ci,
+  `core_images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `core_urls` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `core_hits` int UNSIGNED NOT NULL DEFAULT '0',
   `core_version` int UNSIGNED NOT NULL DEFAULT '1',
   `core_ordering` int NOT NULL DEFAULT '0',
-  `core_metakey` text COLLATE utf8mb4_unicode_ci,
-  `core_metadesc` text COLLATE utf8mb4_unicode_ci,
+  `core_metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `core_metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `core_catid` int UNSIGNED NOT NULL DEFAULT '0',
   `core_type_id` int UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`core_content_id`),
@@ -2719,18 +2877,18 @@ CREATE TABLE IF NOT EXISTS `amn_updates` (
   `update_id` int NOT NULL AUTO_INCREMENT,
   `update_site_id` int DEFAULT '0',
   `extension_id` int DEFAULT '0',
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `element` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `type` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `folder` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `element` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `folder` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
   `client_id` tinyint DEFAULT '0',
-  `version` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `detailsurl` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `infourl` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `changelogurl` text COLLATE utf8mb4_unicode_ci,
-  `extra_query` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `version` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detailsurl` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `infourl` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `changelogurl` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `extra_query` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
   PRIMARY KEY (`update_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Available Updates';
 
@@ -2800,16 +2958,16 @@ INSERT INTO `amn_updates` (`update_id`, `update_site_id`, `extension_id`, `name`
 DROP TABLE IF EXISTS `amn_update_sites`;
 CREATE TABLE IF NOT EXISTS `amn_update_sites` (
   `update_site_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `type` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `location` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `location` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `enabled` int DEFAULT '0',
   `last_check_timestamp` bigint DEFAULT '0',
-  `extra_query` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `extra_query` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   PRIMARY KEY (`update_site_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Update Sites';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Update Sites';
 
 --
 -- Vypisuji data pro tabulku `amn_update_sites`
@@ -2818,7 +2976,9 @@ CREATE TABLE IF NOT EXISTS `amn_update_sites` (
 INSERT INTO `amn_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`, `checked_out`, `checked_out_time`) VALUES
 (1, 'Joomla! Core', 'tuf', 'https://update.joomla.org/cms/', 1, 1788908869, '', NULL, NULL),
 (2, 'Accredited Joomla! Translations', 'collection', 'https://update.joomla.org/language/translationlist_6.xml', 1, 1788908839, '', NULL, NULL),
-(3, 'Joomla! Update Component', 'extension', 'https://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1788908870, '', NULL, NULL);
+(3, 'Joomla! Update Component', 'extension', 'https://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1788908870, '', NULL, NULL),
+(4, 'Akeeba Backup Core for Joomla!', 'extension', 'https://cdn.akeeba.com/updates/pkgakeebabackupcore.xml', 1, 1788909924, '', NULL, NULL),
+(5, 'Slideshow CK Light Update', 'extension', 'https://update.joomlack.fr/slideshowck_light_update.xml', 1, 0, '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2841,7 +3001,9 @@ INSERT INTO `amn_update_sites_extensions` (`update_site_id`, `extension_id`) VAL
 (1, 247),
 (2, 248),
 (2, 255),
-(3, 24);
+(3, 24),
+(4, 259),
+(5, 260);
 
 -- --------------------------------------------------------
 
@@ -2855,7 +3017,7 @@ CREATE TABLE IF NOT EXISTS `amn_usergroups` (
   `parent_id` int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
   `lft` int NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`),
   KEY `idx_usergroup_title_lookup` (`title`),
@@ -2887,22 +3049,22 @@ INSERT INTO `amn_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 DROP TABLE IF EXISTS `amn_users`;
 CREATE TABLE IF NOT EXISTS `amn_users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `username` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `username` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `block` tinyint NOT NULL DEFAULT '0',
   `sendEmail` tinyint DEFAULT '0',
   `registerDate` datetime NOT NULL,
   `lastvisitDate` datetime DEFAULT NULL,
-  `activation` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `activation` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `lastResetTime` datetime DEFAULT NULL COMMENT 'Date of last password reset',
   `resetCount` int NOT NULL DEFAULT '0' COMMENT 'Count of password resets since lastResetTime',
-  `otpKey` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Two factor authentication encrypted keys',
-  `otep` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Backup Codes',
+  `otpKey` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Two factor authentication encrypted keys',
+  `otep` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Backup Codes',
   `requireReset` tinyint NOT NULL DEFAULT '0' COMMENT 'Require user to reset password on next login',
-  `authProvider` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Name of used authentication plugin',
+  `authProvider` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Name of used authentication plugin',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_username` (`username`),
   KEY `idx_name` (`name`(100)),
@@ -2926,11 +3088,11 @@ INSERT INTO `amn_users` (`id`, `name`, `username`, `email`, `password`, `block`,
 DROP TABLE IF EXISTS `amn_user_keys`;
 CREATE TABLE IF NOT EXISTS `amn_user_keys` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `series` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `time` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `uastring` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `series` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `time` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uastring` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `series` (`series`),
   KEY `user_id` (`user_id`)
@@ -2946,10 +3108,10 @@ DROP TABLE IF EXISTS `amn_user_mfa`;
 CREATE TABLE IF NOT EXISTS `amn_user_mfa` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `method` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `method` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `default` tinyint NOT NULL DEFAULT '0',
-  `options` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `options` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_on` datetime NOT NULL,
   `last_used` datetime DEFAULT NULL,
   `tries` int NOT NULL DEFAULT '0',
@@ -2969,8 +3131,8 @@ CREATE TABLE IF NOT EXISTS `amn_user_notes` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int UNSIGNED NOT NULL DEFAULT '0',
   `catid` int UNSIGNED NOT NULL DEFAULT '0',
-  `subject` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `checked_out` int UNSIGNED DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
@@ -2995,8 +3157,8 @@ CREATE TABLE IF NOT EXISTS `amn_user_notes` (
 DROP TABLE IF EXISTS `amn_user_profiles`;
 CREATE TABLE IF NOT EXISTS `amn_user_profiles` (
   `user_id` int NOT NULL,
-  `profile_key` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `profile_value` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profile_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profile_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ordering` int NOT NULL DEFAULT '0',
   UNIQUE KEY `idx_user_id_profile_key` (`user_id`,`profile_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Simple user profile storage table';
@@ -3037,9 +3199,9 @@ INSERT INTO `amn_user_usergroup_map` (`user_id`, `group_id`) VALUES
 DROP TABLE IF EXISTS `amn_viewlevels`;
 CREATE TABLE IF NOT EXISTS `amn_viewlevels` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `ordering` int NOT NULL DEFAULT '0',
-  `rules` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
+  `rules` varchar(5120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_assetgroup_title_lookup` (`title`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -3063,10 +3225,10 @@ INSERT INTO `amn_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 
 DROP TABLE IF EXISTS `amn_webauthn_credentials`;
 CREATE TABLE IF NOT EXISTS `amn_webauthn_credentials` (
-  `id` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Credential ID',
-  `user_id` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User handle',
-  `label` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Human readable label',
-  `credential` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Credential source data, JSON format',
+  `id` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Credential ID',
+  `user_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User handle',
+  `label` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Human readable label',
+  `credential` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Credential source data, JSON format',
   PRIMARY KEY (`id`(100)),
   KEY `user_id` (`user_id`(100))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -3082,9 +3244,9 @@ CREATE TABLE IF NOT EXISTS `amn_workflows` (
   `id` int NOT NULL AUTO_INCREMENT,
   `asset_id` int DEFAULT '0',
   `published` tinyint NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `default` tinyint NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
@@ -3122,7 +3284,7 @@ DROP TABLE IF EXISTS `amn_workflow_associations`;
 CREATE TABLE IF NOT EXISTS `amn_workflow_associations` (
   `item_id` int NOT NULL DEFAULT '0' COMMENT 'Extension table id value',
   `stage_id` int NOT NULL COMMENT 'Foreign Key to #__workflow_stages.id',
-  `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`item_id`,`extension`),
   KEY `idx_item_stage_extension` (`item_id`,`stage_id`,`extension`),
   KEY `idx_item_id` (`item_id`),
@@ -3143,10 +3305,10 @@ CREATE TABLE IF NOT EXISTS `amn_workflow_stages` (
   `ordering` int NOT NULL DEFAULT '0',
   `workflow_id` int NOT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `default` tinyint NOT NULL DEFAULT '0',
-  `position` text COLLATE utf8mb4_unicode_ci,
+  `position` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `checked_out_time` datetime DEFAULT NULL,
   `checked_out` int UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -3177,11 +3339,11 @@ CREATE TABLE IF NOT EXISTS `amn_workflow_transitions` (
   `ordering` int NOT NULL DEFAULT '0',
   `workflow_id` int NOT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `from_stage_id` int NOT NULL,
   `to_stage_id` int NOT NULL,
-  `options` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `options` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `checked_out` int UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`),
