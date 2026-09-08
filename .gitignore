@@ -1,0 +1,4 @@
+/cache/*
+!/cache/index.html
+/administrator/cache/*
+!/administrator/cache/index.html
