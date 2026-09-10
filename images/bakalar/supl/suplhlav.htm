@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="cs">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+<meta http-equiv="Pragma" content="no-cache">
+<title>Bakaláři - Suplování</title>
+<link rel="stylesheet" type="text/css" href="styly_s.css">
+</head>
+<body class="nb_suplov_3">
+<!-- 20/21 -->
+<form>
+<table class="nb_tb_3" width="100%">
+  <tr>
+    <td class="nb_td_titulek_3" width="100%"><p>ACADEMIA MERCURII soukromá střední škola, s.r.o.</p></td>
+  </tr>
+  <tr>
+  <td class="nb_td_3">
+<span class="textinfo_3">Suplování:</span>
+&nbsp;&nbsp;
+    <input type="button" name="btprev" value="<<" onclick="if (cbfiles.selectedIndex<(cbfiles.length-1)) {cbfiles.selectedIndex=cbfiles.selectedIndex+1;parent.surrmmdd.location.href=cbfiles.value}" style="font-family: Arial; font-size: 12px; font-weight: bold">
+&nbsp;
+    <select size="1" name="cbfiles" style="font-family: Arial; font-size: 12px; font-weight: bold; border-style: solid" onchange="parent.surrmmdd.location.href=cbfiles.value">
+      <option value="su210920.htm">&nbsp;Po&nbsp;20.9.2021&nbsp;</option>
+      <option value="su210917.htm">&nbsp;Pá&nbsp;17.9.2021&nbsp;</option>
+      <option value="su210916.htm">&nbsp;Čt&nbsp;16.9.2021&nbsp;</option>
+      <option value="su210915.htm"selected>&nbsp;St&nbsp;15.9.2021&nbsp;</option>
+    </select>
+&nbsp;
+    <input type="button" name="btnext" value=">>" onclick="if (cbfiles.selectedIndex>0) {cbfiles.selectedIndex=cbfiles.selectedIndex-1;parent.surrmmdd.location.href=cbfiles.value}" style="font-family: Arial; font-size: 12px; font-weight: bold">
+  </td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
