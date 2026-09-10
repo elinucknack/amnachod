@@ -4,6 +4,9 @@
 
   use Joomla\CMS\Factory;
   use Joomla\CMS\Uri\Uri;
+  use Joomla\CMS\HTML\HTMLHelper;
+  
+  $this->addHeadLink(HTMLHelper::_('image', 'logo.svg', '', [], true, 1), 'icon', 'rel', ['type' => 'image/svg+xml']);
 
   $app = Factory::getApplication();
   $doc = $app->getDocument();
@@ -13,7 +16,6 @@
   $template = $this->template;
   $sitename = $app->get("sitename");
   $title = $doc->getTitle();
-  $ver = $lang->getTag();
 
   $wa = $this->getWebAssetManager();
   $wa->registerAndUseStyle('template-style', 'templates/' . $template . '/css/style.css');
@@ -33,7 +35,7 @@
         <tbody>
           <tr>
             <td id="logo">
-              <img src="templates/amswallow/images/logo-<?php echo $ver; ?>.svg" alt="logo-<?php echo $ver; ?>.svg" onclick="location='<?php echo $root; ?>'" />
+              <img src="templates/amswallow/images/logo.svg" alt="logo.svg" onclick="location='<?php echo $root; ?>'" />
             </td>
             <td id="link-menu">
               <jdoc:include type="modules" name="odkazy" />
@@ -97,7 +99,7 @@
         <tbody>
           <tr>
             <td id="icon">
-              <img src="templates/amswallow/images/logo-<?php echo $ver; ?>.svg" alt="logo-<?php echo $ver; ?>.svg">
+              <img src="templates/amswallow/images/logo.svg" alt="logo.svg">
             </td>
             <td id="info">
               <jdoc:include type="modules" name="zapati" />
