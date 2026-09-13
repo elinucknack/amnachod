@@ -695,6 +695,15 @@ body {
   width: 280px;
 }
 
+#right-menu button {
+  display: block;
+  width: 100%;
+}
+
+#right-menu .icon-chevron-down {
+  display: none;
+}
+
 #right-menu a,
 #right-menu span {
   background-color: #0072bc;

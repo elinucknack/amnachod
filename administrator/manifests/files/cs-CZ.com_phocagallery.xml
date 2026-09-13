@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension method="upgrade" type="file">
+
+  <name>Phoca Gallery (čeština)</name>
+  <creationDate>2026-09-04</creationDate>
+  <author>Bong</author>
+	<authorEmail>info@bongovo.cz</authorEmail>
+	<authorUrl>www.bongovo.cz</authorUrl>
+	<copyright>Copyright (c)2011-2026</copyright>
+  <description><![CDATA[<div align='left' style='padding: 17px; position: relative; background-color: #004764;'>
+  <p><a href='https://www.bongovo.cz' target='_blank'><img border='0' src='https://www.bongovo.cz/images/logo-bongovo-instaler.png' alt='www.bongovo.cz' /></a></p>
+  <p>Čeština pro komponentu, pluginy a moduly <b>Phoca Gallery</b> - administrátorské a uživatelské rozhraní.</p>
+  <p>
+  <a href='https://www.bongovo.cz/' target='_blank' class='btn btn-sm btn-success' style='box-shadow: 0 4px 8px rgba(0,0,0,0.5);'><i class='icon-home'></i> Bongovo!</a> &nbsp;
+  <a href='https://www.bongovo.cz/podporte-nas' target='_blank' class='btn btn-sm btn-primary' style='box-shadow: 0 4px 8px rgba(0,0,0,0.5);'><i class='icon-credit'></i> Podpořte nás</a> &nbsp;
+  <a href='https://www.bongovo.cz/ke-stazeni' target='_blank' class='btn btn-sm btn-warning' style='box-shadow: 0 4px 8px rgba(0,0,0,0.5);'><i class='icon-download'></i> Ke stažení</a>
+  </p>
+  <style>a[target='_blank']::before{content:'';} a.btn{text-decoration:none;}</style>
+  </div>]]></description>
+  <version>6.1.4</version>
+
+  <fileset>
+
+    <files folder="admin" target="language/cs-CZ/">
+      <file>cs-CZ.com_phocagallery.ini</file>
+      <file>cs-CZ.com_phocagallery.sys.ini</file>
+    </files>
+
+    <files folder="admin" target="administrator/language/cs-CZ/">
+      <file>cs-CZ.com_phocagallery.ini</file>
+      <file>cs-CZ.com_phocagallery.sys.ini</file>
+      <file>cs-CZ.plg_content_phocagallery.ini</file>
+      <file>cs-CZ.plg_content_phocagallery.sys.ini</file>
+      <file>cs-CZ.plg_content_phocagallerysimple.ini</file>
+      <file>cs-CZ.plg_content_phocagallerysimple.sys.ini</file>
+      <file>cs-CZ.plg_content_phocagalleryslideshow.ini</file>
+      <file>cs-CZ.plg_content_phocagalleryslideshow.sys.ini</file>
+      <file>cs-CZ.plg_editors-xtd_phocagallery.ini</file>
+      <file>cs-CZ.plg_editors-xtd_phocagallery.sys.ini</file>
+      <file>cs-CZ.plg_finder_phocagallery.ini</file>
+      <file>cs-CZ.plg_finder_phocagallery.sys.ini</file>
+      <file>cs-CZ.plg_finder_phocagallerycategory.ini</file>
+      <file>cs-CZ.plg_finder_phocagallerycategory.sys.ini</file>
+      <file>cs-CZ.plg_finder_phocagalleryimage.ini</file>
+      <file>cs-CZ.plg_finder_phocagalleryimage.sys.ini</file>
+    </files>
+
+    <files folder="site" target="language/cs-CZ/">
+      <file>cs-CZ.mod_phocagallery_image.ini</file>
+      <file>cs-CZ.mod_phocagallery_image.sys.ini</file>
+      <file>cs-CZ.mod_phocagallery_menu.ini</file>
+      <file>cs-CZ.mod_phocagallery_menu.sys.ini</file>
+      <file>cs-CZ.mod_phocagallery_slideshow_bxslider.ini</file>
+      <file>cs-CZ.mod_phocagallery_slideshow_bxslider.sys.ini</file>
+      <file>cs-CZ.mod_phocagallery_slideshow_skitter.ini</file>
+      <file>cs-CZ.mod_phocagallery_slideshow_skitter.sys.ini</file>
+      <file>cs-CZ.mod_phocagallery_tree.ini</file>
+      <file>cs-CZ.mod_phocagallery_tree.sys.ini</file>
+    </files>
+
+    <files folder="help" target="administrator/components/com_phocagallery/help/cs-CZ/">
+      <file>index.html</file>
+      <file>screen.phocagallery.html</file>
+      <file>logo-phoca.png</file>
+    </files>
+
+  </fileset>
+
+  <updateservers>
+     <server type="collection" priority="1" name="Bongovo! Translation Update Server">https://www.bongovo.cz/download/translationlist.xml</server>
+  </updateservers>
+  
+</extension>

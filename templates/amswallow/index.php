@@ -5,8 +5,6 @@
   use Joomla\CMS\Factory;
   use Joomla\CMS\Uri\Uri;
   use Joomla\CMS\HTML\HTMLHelper;
-  
-  $this->addHeadLink(HTMLHelper::_('image', 'logo.svg', '', [], true, 1), 'icon', 'rel', ['type' => 'image/svg+xml']);
 
   $app = Factory::getApplication();
   $doc = $app->getDocument();
