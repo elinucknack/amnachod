@@ -38,7 +38,7 @@ class JConfig {
 	public $cors_allow_headers = 'Content-Type,X-Joomla-Token,Authorization';
 	public $mailonline = true;
 	public $mailer = 'mail';
-	public $mailfrom = 'libor.stitak@gmail.com';
+	public $mailfrom = 'info@academiamercurii.cz';
 	public $fromname = 'ACADEMIA MERCURII';
 	public $sendmail = '/usr/sbin/sendmail';
 	public $smtpauth = false;
